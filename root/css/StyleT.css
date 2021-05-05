@@ -1,0 +1,193 @@
+.Font {
+    font-family: Comic Sans MS;
+}
+
+.defaultFont {
+    color: white;
+    font-size: 15px;
+    font-family: Comic Sans MS;
+}
+
+.textField {
+    background-color: white;
+    color: black;
+}
+
+.textField:hover {
+    background-color: #555555;
+    color: white;
+}
+
+#registerContainer1 {
+    background: rgba(0, 0, 0, 20);
+    border-color: #3366ff;
+    border-radius: 15px;
+    opacity: 0.8;
+    width: 60%;
+}
+
+#registerContainer2 {
+    background: rgba(0, 0, 0, 20);
+    border-color: #3366ff;
+    border-radius: 15px;
+    opacity: 0.8;
+    width: 60%;
+}
+
+.registerHeader {
+    color: #3366ff;
+    padding-bottom: 20px;
+    font-size: 30px;
+    font-family: Comic Sans MS;
+}
+
+.logoBack {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#about {
+    background-color: darkgray;
+    align-items: center;
+    justify-content: center;
+}
+
+.orderHeader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    border: 1px solid #3366ff;
+    border-bottom: none;
+}
+
+.orderInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    color: white;
+    padding: 10px;
+    border: 1px dashed gray;
+}
+
+#cartHeader {
+    background-color: black;
+}
+
+#cartFooter {
+    background-color: #f8f8ff;
+}
+
+.cartContent {
+    overflow-y: scroll;
+}
+
+#myCart {
+    border: 5px solid;
+    width: 100%;
+    height: 100%;
+}
+
+#myCart2 {
+    width: 100%;
+    height: 100%;
+    background-color: white;
+}
+
+#myCartHeader {
+    font-family: Comic Sans MS;
+    color: #3366ff;
+}
+
+
+/*Scrollbar Settings */
+
+::-webkit-scrollbar {
+    width: 5px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: black;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+.orderContainer {
+    background-color: #f1f1f1;
+}
+
+.orderItem {
+    padding: 5px;
+    border: 1px rgb(187, 187, 187) solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cartText {
+    font-weight: bold;
+}
+
+#cartProductHeader {
+    font-family: Comic Sans MS;
+    color: #3366ff;
+}
+
+.orderText {
+    padding: 5px;
+    border: 1px rgb(187, 187, 187) solid;
+}
+
+.greenB {
+    background-color: #5cb85c !important;
+}
+
+.greenB:hover {
+    color: #5cb85c !important;
+}
+
+.blueB {
+    background-color: #3366ff !important;
+}
+
+.blueB:hover {
+    color: #3366ff !important;
+}
+
+.redB {
+    background-color: #d9534f !important;
+}
+
+.redB:hover {
+    color: #d9534f !important;
+}
+
+.custom-btn {
+    font-family: Comic Sans MS !important;
+    font-size: large !important;
+}
+
+.custom-btn:hover {
+    background-color: black !important;
+    font-family: Comic Sans MS !important;
+}
+
+.error {
+    color: red;
+    font-family: Comic Sans MS;
+}
+
+.success {
+    color: green;
+    font-family: Comic Sans MS;
+}
