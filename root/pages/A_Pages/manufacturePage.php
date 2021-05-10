@@ -64,7 +64,7 @@ $email = $row[3];
         <div id="pendingOrdersRequests" class="container">
             <div class="row row-md">
 
-                <h1 class="adminH pt-3">Orders Requests:</h1>
+                <h1 class="adminH pt-3">Orders Requests: <a href="#" data-toggle='modal' onclick="showAllOrders()" data-target='#showMyOrder2' class="btn btn-primary custom-btn blueB">Show All Orders</a></h1>
                 <div id="Count2"></div>
             </div>
 
@@ -329,7 +329,7 @@ $email = $row[3];
                     <div id="myCart" class="modal-dialog modal-lg " style="border-color: black;">
                         <div id="myCart2" class="modal-content border border-primary">
                             <div id="cartHeader" class="modal-header">
-                                <h3 id="myCartHeader">Ordered Items</h3>
+                                <h3 id="myCartHeader">Ordered Items <a href="#" onclick="print()" class="btn btn-success custom-btn greenB">Print</a> </h3>
                             </div>
                             <div id="showDrop3" class="modal-body cartContent">
 
