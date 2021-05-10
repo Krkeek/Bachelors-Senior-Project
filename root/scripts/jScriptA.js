@@ -271,7 +271,7 @@ function pendingOrdersRequests() {
                 <div class='col orderInfo'>` + totalCost + `</div>
                 <div class='col orderInfo'>` + cust_user + `</div>
                  <div class='col orderInfo'><a id='` + orderId + `' data-toggle='modal' data-target='#showMyOrder2' onClick='showOrderedItemRequests(event)'  type='button' class='btn btn-primary custom-btn blueB'>Show</a></div>
-                 <div class='col adminInfo buttonBox'><a name='` + orderId + `'  type='button' class='btn btn-success custom-btn greenB'>Start</a><a name='` + orderId + `' type='button' class='btn btn-danger custom-btn redB'>Finished</a></div>
+                 <div class='col adminInfo buttonBox'><a name='` + orderId + `'  type='button' onclick='startFactory(this.name)' class='btn btn-success custom-btn greenB'>Start</a><a name='` + orderId + `' type='button'  onclick='finishFactory(this.name)' class='btn btn-danger custom-btn redB'>Finished</a></div>
                 </div>
                  
                  `
@@ -358,4 +358,32 @@ function showOrderedItemRequests(e) {
 
 
 
+}
+
+function startFactory(a) {
+    var u = a;
+
+    $.ajax({
+        url: "../../dataManagment/server.php",
+        method: "POST",
+        data: { u: u, startFactory: 'startFactory' },
+        success: function(res) {
+            pendingOrdersRequests();
+            $('#startFactory').modal('show');
+        },
+    });
+}
+
+function finishFactory(a) {
+    var u = a;
+
+    $.ajax({
+        url: "../../dataManagment/server.php",
+        method: "POST",
+        data: { u: u, finishFactory: 'finishFactory' },
+        success: function(res) {
+            pendingOrdersRequests();
+            $('#finishFactory').modal('show');
+        },
+    });
 }

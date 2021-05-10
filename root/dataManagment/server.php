@@ -643,3 +643,19 @@ if (isset($_GET['showOrderItemsRequests']) == "showOrderItemsRequests") {
     $items->item = $data1;
     echo json_encode($items);
 }
+
+//Start factory
+if (isset($_POST['startFactory']) == "startFactory") {
+    $u = $_POST['u'];
+    $query = "UPDATE `ordertable` SET `manufacture_status`='Manufacturing...' WHERE `order_id`='$u';";
+    mysqli_query($con, $query);
+    $action = " ";
+}
+
+//Finish factory
+if (isset($_POST['finishFactory']) == "finishFactory") {
+    $u = $_POST['u'];
+    $query = "UPDATE `ordertable` SET `manufacture_status`='Ready' WHERE `order_id`='$u';";
+    mysqli_query($con, $query);
+    $action = " ";
+}

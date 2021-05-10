@@ -116,6 +116,14 @@
     border: 2px red solid;
 }
 
+#startFactory {
+    border: 2px #5cb85c solid;
+}
+
+#finishFactory {
+    border: 2px red solid;
+}
+
 #CountOP {
     font-size: 15px;
     font-family: Comic Sans MS;

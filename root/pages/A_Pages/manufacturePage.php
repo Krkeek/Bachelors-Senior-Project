@@ -342,6 +342,43 @@ $email = $row[3];
             </div>
         </div>
     </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="modal fade " id="startFactory">
+                    <div class="modal-dialog  ">
+                        <div class="modal-content border border-success">
+                            <div class="modal-header center">
+                                <h5>Starting <span style="color: #5cb85c;">Manufacturing</span></h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="modal fade " id="finishFactory">
+                    <div class="modal-dialog  ">
+                        <div class="modal-content border border-primary">
+                            <div class="modal-header center">
+                                <h5>Order <span style="color:red;">Finished</span></h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
 
 
     <footer class="bg text-center text-white" id="about" style=" background-color:black;">
