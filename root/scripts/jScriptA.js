@@ -387,3 +387,85 @@ function finishFactory(a) {
         },
     });
 }
+
+function showAllOrders() {
+
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?showAllOrders=showAllOrders";
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+            var items = JSON.parse(this.responseText);
+            var item = items.item;
+            var html1 = "";
+            for (var a = 0; a < item.length; a++) {
+                var type = item[a].type;
+                var size = item[a].size;
+                var color = item[a].color;
+                var price = item[a].price;
+                var pocketSticker = item[a].pocket_sticker;
+                var frontSticker = item[a].front_sticker;
+                var backSticker = item[a].back_sticker;
+                var url = identifyShirt(type, color);
+
+                html1 +=
+                    "<div name='forPrint' class='container orderContainer'><div class='row'><div class='col-3 orderItem'><img src='" +
+                    url +
+                    "' width='90px'>";
+                html1 +=
+                    " </div><div class='col-5 orderItem'><div class='container'><div class='row'><div class='col'><div class='row'></div><div class='row'><p class='cartText'>POCKET</p></div>";
+                html1 +=
+                    " <div class='row'><img src='" +
+                    pocketSticker +
+                    "' alt='Empty'  width='30px'></div></div>";
+                html1 +=
+                    " <div class='col'><div class='row'><p class='cartText'>FRONT</p></div><div class='row'><img src='" +
+                    frontSticker +
+                    "' alt='Empty'  width='30px'></div>";
+                html1 +=
+                    " </div><div class='col'><div class='row'><p class='cartText'>BACK</p></div><div class='row'><img src='" +
+                    backSticker +
+                    "' alt='Empty'  width='30px'>";
+                html1 +=
+                    " </div></div></div></div></div><div class='col-4 orderText'><h4 id='cartProductHeader'>" +
+                    type +
+                    "</h4><p><span style='font-weight:bold;'>Size: </span>" +
+                    size +
+                    "<br /><span style='font-weight:bold;'>Price: </span>" +
+                    price +
+                    "$</p></div>";
+                html1 += "</div></div>";
+                html1 += "<br/>";
+
+            }
+            document.getElementById("showDrop3").innerHTML = html1;
+        }
+
+
+
+    }
+
+
+
+
+
+
+}
+
+function print() {
+
+
+
+    var printdata = document.getElementById('showMyOrder2');
+
+    newwin = window.open("", "", "width=1000,height=1000");
+    newwin.document.write(printdata.outerHTML);
+    newwin.print();
+    newwin.close();
+
+
+}
