@@ -50,7 +50,6 @@ if (isset($_POST['reg_user'])) {
         header('location: loginPage.php');
     } else {
         header("location: registrationPage.php?passwordError=$passwordError&usernameError=$usernameError&emailError=$emailError&firstname=$firstname&lastname=$lastname&phonenumber=$phonenumber&email=$email&address=$address&address2=$address2&username=$username");
-
     }
 }
 //LOGIN USER
@@ -72,7 +71,6 @@ if (isset($_POST['login_user'])) {
             header('location: ../C_Pages/mainWebpage.php#design');
         } else {
             header("location: loginPage.php?login=wrong&user=$username");
-
         }
     }
 }
@@ -110,7 +108,6 @@ if (isset($_POST['login_admin'])) {
         }
     } else {
         header("location: loginPage(Admin).php?login=wrong&user=$username");
-
     }
 }
 //SAVE CHANGES
@@ -133,7 +130,6 @@ if (isset($_POST['save'])) {
         mysqli_query($con, $query2);
         $_SESSION['loggedin'] = "Changes saved";
         header("location: ../C_Pages/mainWebPage.php?change=correct");
-
     } else {
         header("location: ../C_Pages/mainWebPage.php?change=wrong");
     }
@@ -163,7 +159,6 @@ if (isset($_POST['changePass'])) {
         }
         if ($newPassword != $cnewPassword) {
             header("location: ../C_Pages/mainWebpage.php?change=passnoMatch");
-
         }
     }
 }
@@ -222,7 +217,6 @@ if (isset($_POST['saveAdmin'])) {
                 header('location: ../A_Pages/manufacturePage.php?change=correct');
                 break;
         }
-
     } else {
         $position = $_SESSION['position'];
 
@@ -243,9 +237,7 @@ if (isset($_POST['saveAdmin'])) {
                 header('location: ../A_Pages/manufacturePage.php?change=wrong');
                 break;
         }
-
     }
-
 }
 
 //CHANGE PASSWORD (ADMIN)
@@ -281,7 +273,6 @@ if (isset($_POST['changePassAdmin'])) {
                 header('location: ../A_Pages/manufacturePage.php?change=correct#accountSettings');
                 break;
         }
-
     } else {
         if (mysqli_num_rows($results) != 1) {
 
@@ -323,9 +314,7 @@ if (isset($_POST['changePassAdmin'])) {
                     header('location: ../A_Pages/manufacturePage.php?change=passnoMatch#accountSettings');
                     break;
             }
-
         }
-
     }
 }
 
@@ -370,10 +359,8 @@ if (isset($_POST['reg_admin'])) {
         mysqli_query($con, $query);
         $_SESSION['username'] = $username;
         header('location: ../A_Pages/mainAdminPage.php?change=accountAdded');
-
     } else {
         header("location: ../A_Pages/mainAdminPage.php?passwordError=$passwordError&usernameError=$usernameError&emailError=$emailError&firstname=$firstname&lastname=$lastname&phonenumber=$phonenumber&email=$email&username=$username");
-
     }
 }
 
@@ -408,7 +395,6 @@ if (isset($_POST['cartItemInsertion']) == "cartItemInsertion") {
     $user = $_SESSION['username'];
     $query = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No');";
     mysqli_query($con, $query);
-
 }
 
 //DELETE PRODUCT FROM CART
@@ -416,7 +402,6 @@ if (isset($_POST['deletedProduct']) == "deletedProduct") {
     $ids = $_POST['id'];
     $query = "DELETE FROM `product` WHERE `product_id` = '$ids'";
     mysqli_query($con, $query);
-
 }
 
 //GET STICKERS FROM DATABASE
@@ -495,7 +480,6 @@ if (isset($_GET['dataRetrieve']) == "dataRetrieve") {
     $Stickers->Food = $data10;
 
     echo json_encode($Stickers);
-
 }
 
 //FILL THE CART
@@ -510,7 +494,6 @@ if (isset($_GET['cartRetrieve']) == "cartRetrieve") {
     $cartOrders = new stdClass();
     $cartOrders->cartOrder = $data1;
     echo json_encode($cartOrders);
-
 }
 
 //Show the items of the product
@@ -539,7 +522,6 @@ if (isset($_POST['orderTheProducts']) == "orderTheProducts") {
         $query5 = "UPDATE `product` SET `ordered`= 'Ordered' WHERE `username`='$user' &&`product_id`='$x'";
         mysqli_query($con, $query5);
     }
-
 }
 
 //Show all orders in the orderTab
@@ -555,7 +537,6 @@ if (isset($_GET['orderRetrieve']) == "orderRetrieve") {
     $Orders = new stdClass();
     $Orders->Order = $data1;
     echo json_encode($Orders);
-
 }
 
 //Show the ordered Items
@@ -572,7 +553,6 @@ if (isset($_GET['showOrderItems']) == "showOrderItems") {
     }
     $items->item = $data1;
     echo json_encode($items);
-
 }
 
 //Get all admins
@@ -588,7 +568,6 @@ if (isset($_GET['adminRetrieve']) == "adminRetrieve") {
     $Admins = new stdClass();
     $Admins->Admin = $data1;
     echo json_encode($Admins);
-
 }
 
 //Delete Admin
@@ -597,7 +576,6 @@ if (isset($_POST['deletedAdmin']) == "deletedAdmin") {
 
     $query = "UPDATE `admin` SET `active`='No' WHERE `username`='$username'";
     mysqli_query($con, $query);
-
 }
 
 //Change Position
@@ -606,7 +584,6 @@ if (isset($_POST['changePosition']) == "changePosition") {
     $position = $_POST['position'];
     $query = "UPDATE `admin` SET `position`='$position' WHERE `username`='$u' && `active` = 'Yes';";
     mysqli_query($con, $query);
-
 }
 
 //Get the pending orders
@@ -635,5 +612,18 @@ if (isset($_GET['pendingOrdersRetrieve']) == "pendingOrdersRetrieve") {
     $Orders->CountP = $data3;
 
     echo json_encode($Orders);
+}
 
+//Get the approved orders
+if (isset($_GET['pendingOrdersRequests']) == "pendingOrdersRequests") {
+    $result1 = mysqli_query($con, "SELECT `order_id`,`date_of_order`, `total_cost`,`username` FROM `ordertable` WHERE `manufacture_status` = 'Approved' && `deleted` = 'No'");
+    $data1 = array();
+    while ($row1 = mysqli_fetch_assoc($result1)) {
+        $data1[] = $row1;
+    }
+
+    $OrdersRequests = new stdClass();
+    $OrdersRequests->OrderRequest = $data1;
+
+    echo json_encode($OrdersRequests);
 }

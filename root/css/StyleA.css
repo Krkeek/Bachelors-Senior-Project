@@ -121,3 +121,23 @@
     font-family: Comic Sans MS;
     color: white;
 }
+
+#ordersRequests {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    border-bottom: 4px solid white;
+}
+
+#pendingOrdersRequests {
+    display: none;
+}
+
+#nopendingOrdersRequests {
+    display: none;
+    font-family: Comic Sans MS;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}

@@ -241,3 +241,51 @@ function showOrderedItems(e) {
 };
 
 //#endregion
+
+//#region Show pending orders
+function pendingOrdersRequests() {
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?pendingOrdersRequests=pendingOrdersRequests";
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            var OrdersRequests = JSON.parse(this.responseText);
+            var OrderRequest = OrdersRequests.OrderRequest;
+            var html1 = "";
+            if (OrderRequest.length == 0) {
+                document.getElementById("nopendingOrdersRequests").style.display = "inline-flex";
+                document.getElementById("pendingOrdersRequests").style.display = "none";
+            } else {
+                for (var a = 0; a < OrderRequest.length; a++) {
+                    var dateofOrder = OrderRequest[a].date_of_order;
+                    var totalCost = OrderRequest[a].total_cost;
+                    var orderId = OrderRequest[a].order_id;
+                    var cust_user = OrderRequest[a].username;
+
+                    html1 += `  
+                 <div class='row row-md'>
+               <div class='col orderInfo'>` + dateofOrder + `</div>
+                <div class='col orderInfo'>` + totalCost + `</div>
+                <div class='col orderInfo'>` + cust_user + `</div>
+                 <div class='col orderInfo'><a id='` + orderId + `' data-toggle='modal' data-target='#showMyOrder' onClick='showOrderedItems(event)' type='button' class='btn btn-primary custom-btn blueB'>Show</a></div>
+                 <div class='col adminInfo buttonBox'><a name='` + orderId + `' onClick='approveOrder(this.name)' type='button' class='btn btn-success custom-btn greenB'>Approve</a><a name='` + orderId + `' onClick='rejectOrder(this.name)' type='button' class='btn btn-danger custom-btn redB'>Reject</a></div>
+                </div>
+                 
+                 `
+
+                    document.getElementById("pOrdersRequests").innerHTML = html1;
+                    document.getElementById("nopendingOrdersRequests").style.display = "none";
+                    document.getElementById("pendingOrdersRequests").style.display = "block";
+                }
+
+
+
+
+            }
+        };
+    }
+}
+//#endregion

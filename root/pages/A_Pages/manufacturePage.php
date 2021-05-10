@@ -27,7 +27,7 @@ $email = $row[3];
     <title>U-Style</title>
 </head>
 
-<body onload="pendingOrders()">
+<body onload="pendingOrdersRequests()">
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: black;">
         <a class="navbar-brand" href="#">
             <img width="40px" src="../../images/cssPhotos/Logo2.png" alt="Logo">
@@ -36,7 +36,7 @@ $email = $row[3];
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav Font">
-                <li class="nav-item"><a href="#tab1" class="nav-link">Tab1</a></li>
+                <li class="nav-item"><a href="#ordersRequests" class="nav-link">List of Orders Requests</a></li>
                 <li class="nav-item"><a href="#accountSettings" class="nav-link">Account Settings</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
 
@@ -58,7 +58,62 @@ $email = $row[3];
 
         </div>
     </nav>
-    <section id="tab1" class="section">
+    <section id="ordersRequests" class="section">
+
+
+        <div id="pendingOrdersRequests" class="container">
+            <div class="row row-md">
+
+                <h1 class="adminH pt-3">Orders Requests:</h1>
+                <div id="Count2"></div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Date of order
+                </div>
+                <div class="col orderHeader">
+                    Total Cost($)
+                </div>
+
+                <div class="col orderHeader">
+                    Cust_username
+                </div>
+                <div class="col orderHeader">
+                    Items
+                </div>
+                <div class="col orderHeader">
+                    Action
+                </div>
+
+            </div>
+
+            <div id="pOrdersRequests" class="pb-3">
+
+
+            </div>
+
+
+
+
+        </div>
+        <div id="nopendingOrdersRequests" class="container">
+
+
+
+            <label>
+                No Orders Requests <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-bag-x" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M6.146 8.146a.5.5 0 0 1 .708 0L8 9.293l1.146-1.147a.5.5 0 1 1 .708.708L8.707 10l1.147 1.146a.5.5 0 0 1-.708.708L8 10.707l-1.146 1.147a.5.5 0 0 1-.708-.708L7.293 10 6.146 8.854a.5.5 0 0 1 0-.708z"></path>
+                    <path d="M8 1a2.5 2.5 0 0 1 2.5 2.5V4h-5v-.5A2.5 2.5 0 0 1 8 1zm3.5 3v-.5a3.5 3.5 0 1 0-7 0V4H1v10a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V4h-3.5zM2 5h12v9a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V5z"></path>
+                </svg>
+
+            </label>
+
+
+
+
+
+        </div>
 
 
     </section>
@@ -267,7 +322,26 @@ $email = $row[3];
 
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="modal fade" id="showMyOrder2">
+                    <div id="myCart" class="modal-dialog modal-lg " style="border-color: black;">
+                        <div id="myCart2" class="modal-content border border-primary">
+                            <div id="cartHeader" class="modal-header">
+                                <h3 id="myCartHeader">Ordered Items</h3>
+                            </div>
+                            <div id="showDrop3" class="modal-body cartContent">
 
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <footer class="bg text-center text-white" id="about" style=" background-color:black;">
