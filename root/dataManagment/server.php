@@ -627,3 +627,19 @@ if (isset($_GET['pendingOrdersRequests']) == "pendingOrdersRequests") {
 
     echo json_encode($OrdersRequests);
 }
+
+//Show the ordered Items
+if (isset($_GET['showOrderItemsRequests']) == "showOrderItemsRequests") {
+    $items = new stdClass();
+    require_once 'connection.php';
+    $user = $_SESSION['username'];
+    $id = $_GET['id'];
+
+    $result1 = mysqli_query($con, "SELECT * FROM `product` INNER JOIN orderproducts ON product.product_id = orderproducts.product_id WHERE order_id = '$id';");
+    $data1 = array();
+    while ($row1 = mysqli_fetch_assoc($result1)) {
+        $data1[] = $row1;
+    }
+    $items->item = $data1;
+    echo json_encode($items);
+}
