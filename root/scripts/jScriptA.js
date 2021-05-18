@@ -386,6 +386,7 @@ function finishFactory(a) {
 }
 //#endregion
 
+//#region OnClick show all orders in the manufacture
 function showAllOrders() {
 
     var ajax = new XMLHttpRequest();
@@ -446,17 +447,11 @@ function showAllOrders() {
 
 
     }
-
-
-
-
-
-
 }
+//#endregion
 
+//#region Onclick print button in the manufacture account
 function print() {
-
-
 
     var printdata = document.getElementById('showMyOrder2');
 
@@ -465,5 +460,102 @@ function print() {
     newwin.print();
     newwin.close();
 
-
 }
+//#endregion
+
+//#region Show completed orders in the delivery account
+function completedOrdersForDelivery() {
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?completedOrdersForDelivery=completedOrdersForDelivery";
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+            var ordersReady = JSON.parse(this.responseText);
+            var orderReady = ordersReady.orderReady;
+            var html = "";
+            var inTyre = 0;
+            var inBintJbeil = 0;
+            var inSaida = 0;
+            var inBeirut = 0;
+            var inNabatieh = 0;
+            var inJounieh = 0;
+            var inByblos = 0;
+            var inTripoli = 0;
+            var inAkkar = 0;
+            var inBaalbeak = 0;
+            var inBekaa = 0;
+
+            for (var a = 0; a < orderReady.length; a++) {
+                var order_id = orderReady[a].order_id;
+                var firstName = orderReady[a].firstname;
+                var lastName = orderReady[a].lastname;
+                var phone = orderReady[a].phone;
+                var city = orderReady[a].city;
+                var address = orderReady[a].address;
+                var totalCost = orderReady[a].total_cost;
+                var dateOfOrder = orderReady[a].date_of_order;
+
+
+                switch (city) {
+
+                    case 'tyre':
+                        inTyre++;
+                        break;
+                    case 'bintJbeil':
+                        inBintJbeil++;
+                        break;
+                    case 'saida':
+                        inSaida++;
+                        break;
+                    case 'beirut':
+                        inBeirut++;
+                        break;
+                    case 'nabatieh':
+                        inNabatieh++;
+                        break;
+                    case 'jounieh':
+                        inJounieh++;
+                        break;
+                    case 'byblos':
+                        inByblos++;
+                        break;
+                    case 'tripoli':
+                        inTripoli++;
+                        break;
+                    case 'akkar':
+                        inAkkar++;
+                        break;
+                    case 'baalbeck':
+                        inBaalbeak++;
+                        break;
+                    case 'bekaa':
+                        inBekaa++;
+                        break;
+
+
+                }
+
+
+            }
+
+            document.getElementById("inTyre").innerHTML = inTyre;
+            document.getElementById("inBintJbeil").innerHTML = inBintJbeil;
+            document.getElementById("inSaida").innerHTML = inSaida;
+            document.getElementById("inBeirut").innerHTML = inBeirut;
+            document.getElementById("inNabatieh").innerHTML = inNabatieh;
+            document.getElementById("inJounieh").innerHTML = inJounieh;
+            document.getElementById("inByblos").innerHTML = inByblos;
+            document.getElementById("inTripoli").innerHTML = inTripoli;
+            document.getElementById("inAkkar").innerHTML = inAkkar;
+            document.getElementById("inBaalbeak").innerHTML = inBaalbeak;
+            document.getElementById("inTyre").innerHTML = inBekaa;
+
+        }
+
+    }
+}
+//#endregion
