@@ -665,7 +665,7 @@ if (isset($_GET['showAllOrders']) == "showAllOrders") {
     $items = new stdClass();
     require_once 'connection.php';
 
-    $result1 = mysqli_query($con, "SELECT * FROM `product` INNER JOIN orderproducts ON product.product_id = orderproducts.product_id;");
+    $result1 = mysqli_query($con, "SELECT * FROM `product` INNER JOIN orderproducts ON product.product_id = orderproducts.product_id JOIN ordertable ON ordertable.order_id = orderproducts.order_id WHERE `manufacture_status` = 'manufacturing...'");
     $data1 = array();
     while ($row1 = mysqli_fetch_assoc($result1)) {
         $data1[] = $row1;

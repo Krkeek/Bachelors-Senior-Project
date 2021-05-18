@@ -45,6 +45,8 @@ $email = $row[3];
 
                 <li>
 
+                    <a href="#" data-toggle='modal' onclick="showAllOrders()" data-target='#showMyOrder2' class="btn btn-success custom-btn greenB">Show All Orders</a>
+
 
                     <a href="../Intro_Pages/loginPage(Admin).php" class="btn btn-primary custom-btn blueB">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
@@ -64,7 +66,7 @@ $email = $row[3];
         <div id="pendingOrdersRequests" class="container">
             <div class="row row-md">
 
-                <h1 class="adminH pt-3">Orders Requests: <a href="#" data-toggle='modal' onclick="showAllOrders()" data-target='#showMyOrder2' class="btn btn-primary custom-btn blueB">Show All Orders</a></h1>
+                <h1 class="adminH pt-3">Orders Requests:</h1>
                 <div id="Count2"></div>
             </div>
 

@@ -290,7 +290,7 @@ function pendingOrdersRequests() {
 }
 //#endregion
 
-
+//#region Show orders requests in the factory account
 function showOrderedItemRequests(e) {
 
     var id = e.target.id;
@@ -349,17 +349,12 @@ function showOrderedItemRequests(e) {
             document.getElementById("showDrop3").innerHTML = html1;
         }
 
-
-
     }
 
-
-
-
-
-
 }
+//#endregion
 
+//#region Onclick start manufacturing
 function startFactory(a) {
     var u = a;
 
@@ -373,7 +368,9 @@ function startFactory(a) {
         },
     });
 }
+//#endregion
 
+//#region Onclick finish manufacturing
 function finishFactory(a) {
     var u = a;
 
@@ -387,6 +384,7 @@ function finishFactory(a) {
         },
     });
 }
+//#endregion
 
 function showAllOrders() {
 
