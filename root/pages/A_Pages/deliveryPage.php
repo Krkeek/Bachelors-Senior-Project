@@ -72,6 +72,9 @@ $email = $row[3];
                 <div class="col orderHeader">
                     Number of orders Completed
                 </div>
+                <div class="col orderHeader">
+                    Action
+                </div>
             </div>
             <div class="row row-md">
                 <div class="col orderHeader">
@@ -79,6 +82,13 @@ $email = $row[3];
                 </div>
                 <div id="inTyre" class="col orderHeader">
 
+                </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
                 </div>
             </div>
 
@@ -89,6 +99,13 @@ $email = $row[3];
                 <div id="inBintJbeil" class="col orderHeader">
 
                 </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
+                </div>
             </div>
 
             <div class="row row-md">
@@ -97,6 +114,13 @@ $email = $row[3];
                 </div>
                 <div id="inSaida" class="col orderHeader">
 
+                </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
                 </div>
             </div>
 
@@ -107,6 +131,13 @@ $email = $row[3];
                 <div id="inBeirut" class="col orderHeader">
 
                 </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
+                </div>
             </div>
 
             <div class="row row-md">
@@ -115,6 +146,13 @@ $email = $row[3];
                 </div>
                 <div id="inNabatieh" class="col orderHeader">
 
+                </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
                 </div>
             </div>
 
@@ -125,6 +163,13 @@ $email = $row[3];
                 <div id="inJounieh" class="col orderHeader">
 
                 </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
+                </div>
             </div>
 
             <div class="row row-md">
@@ -133,6 +178,13 @@ $email = $row[3];
                 </div>
                 <div id="inByblos" class="col orderHeader">
 
+                </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
                 </div>
             </div>
 
@@ -143,6 +195,13 @@ $email = $row[3];
                 <div id="inTripoli" class="col orderHeader">
 
                 </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
+                </div>
             </div>
 
             <div class="row row-md">
@@ -152,6 +211,13 @@ $email = $row[3];
                 <div id="inAkkar" class="col orderHeader">
 
                 </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
+                </div>
             </div>
             <div class="row row-md">
                 <div class="col orderHeader">
@@ -160,6 +226,13 @@ $email = $row[3];
                 <div id="inBaalbeak" class="col orderHeader">
 
                 </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
+                </div>
             </div>
             <div id="lastRow" class="row row-md">
                 <div class="col orderHeader">
@@ -167,6 +240,13 @@ $email = $row[3];
                 </div>
                 <div id="inBekaa" class="col orderHeader">
 
+                </div>
+                <div class="col orderHeader">
+                    <div class="col buttonBox">
+                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
+                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+
+                    </div>
                 </div>
             </div>
 
