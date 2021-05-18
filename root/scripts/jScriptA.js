@@ -476,7 +476,7 @@ function completedOrdersForDelivery() {
 
             var ordersReady = JSON.parse(this.responseText);
             var orderReady = ordersReady.orderReady;
-            var html = "";
+
             var inTyre = 0;
             var inBintJbeil = 0;
             var inSaida = 0;
@@ -552,7 +552,7 @@ function completedOrdersForDelivery() {
             document.getElementById("inTripoli").innerHTML = inTripoli;
             document.getElementById("inAkkar").innerHTML = inAkkar;
             document.getElementById("inBaalbeak").innerHTML = inBaalbeak;
-            document.getElementById("inTyre").innerHTML = inBekaa;
+            document.getElementById("inBekaa").innerHTML = inBekaa;
 
         }
 
