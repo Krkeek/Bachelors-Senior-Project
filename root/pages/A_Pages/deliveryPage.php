@@ -27,7 +27,7 @@ $email = $row[3];
     <title>U-Style</title>
 </head>
 
-<body onload="pendingOrders()">
+<body>
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: black;">
         <a class="navbar-brand" href="#">
             <img width="40px" src="../../images/cssPhotos/Logo2.png" alt="Logo">
@@ -36,7 +36,7 @@ $email = $row[3];
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav Font">
-                <li class="nav-item"><a href="#tab1" class="nav-link">Tab1</a></li>
+                <li class="nav-item"><a href="#ordersCompleted" class="nav-link">Orders Completed</a></li>
                 <li class="nav-item"><a href="#accountSettings" class="nav-link">Account Settings</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
 
@@ -58,7 +58,120 @@ $email = $row[3];
 
         </div>
     </nav>
-    <section id="tab1" class="section">
+    <section id="ordersCompleted" class="section">
+
+        <div id="ordersCompletedList" class="container">
+            <div class="row row-md">
+
+                <h1 class="adminH pt-3">Orders completed with respect to areas:</h1>
+            </div>
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Location
+                </div>
+                <div class="col orderHeader">
+                    Number of orders Completed
+                </div>
+            </div>
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Tyre
+                </div>
+                <div id="inTyre" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Bint Jbeil
+                </div>
+                <div id="inBintJbeil" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Saida
+                </div>
+                <div id="inSaida" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Beirut
+                </div>
+                <div id="inBeirut" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Nabatieh
+                </div>
+                <div id="inNabatieh" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Jounieh
+                </div>
+                <div id="inJounieh" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Byblos
+                </div>
+                <div id="inByblos" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Tripoli
+                </div>
+                <div id="inTripoli" class="col orderHeader">
+
+                </div>
+            </div>
+
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Akkar
+                </div>
+                <div id="inAkkar" class="col orderHeader">
+
+                </div>
+            </div>
+            <div class="row row-md">
+                <div class="col orderHeader">
+                    Baalbeak
+                </div>
+                <div id="inBaalbeak" class="col orderHeader">
+
+                </div>
+            </div>
+            <div id="lastRow" class="row row-md">
+                <div class="col orderHeader">
+                    Bekaa
+                </div>
+                <div id="inBekaa" class="col orderHeader">
+
+                </div>
+            </div>
+
+        </div>
+
 
 
     </section>
