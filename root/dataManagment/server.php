@@ -673,3 +673,17 @@ if (isset($_GET['showAllOrders']) == "showAllOrders") {
     $items->item = $data1;
     echo json_encode($items);
 }
+
+//Show all completed orders in the manufacture account
+if (isset($_GET['completedOrdersForDelivery']) == "completedOrdersForDelivery") {
+    $ordersReady = new stdClass();
+    require_once 'connection.php';
+
+
+    $result1 = mysqli_query($con, "SELECT `order_id`,`firstname`,`lastname`,`phone`,`city`,`address`,`total_cost`,`date_of_order` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready';");
+    while ($row1 = mysqli_fetch_assoc($result1)) {
+        $data1[] = $row1;
+    }
+    $ordersReady->orderReady = $data1;
+    echo json_encode($ordersReady);
+}

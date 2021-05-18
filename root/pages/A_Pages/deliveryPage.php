@@ -27,7 +27,7 @@ $email = $row[3];
     <title>U-Style</title>
 </head>
 
-<body>
+<body onload="completedOrdersForDelivery()">
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: black;">
         <a class="navbar-brand" href="#">
             <img width="40px" src="../../images/cssPhotos/Logo2.png" alt="Logo">
@@ -36,7 +36,7 @@ $email = $row[3];
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav Font">
-                <li class="nav-item"><a href="#ordersCompleted" class="nav-link">Orders Completed</a></li>
+                <li class="nav-item"><a href="#ordersCompleted" class="nav-link">Ready for Delivery</a></li>
                 <li class="nav-item"><a href="#accountSettings" class="nav-link">Account Settings</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
 
@@ -63,7 +63,7 @@ $email = $row[3];
         <div id="ordersCompletedList" class="container">
             <div class="row row-md">
 
-                <h1 class="adminH pt-3">Orders completed with respect to areas:</h1>
+                <h1 class="adminH pt-3">Orders ready with respect to areas:</h1>
             </div>
             <div class="row row-md">
                 <div class="col orderHeader">
