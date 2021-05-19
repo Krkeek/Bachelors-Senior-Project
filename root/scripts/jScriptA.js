@@ -559,3 +559,38 @@ function completedOrdersForDelivery() {
     }
 }
 //#endregion
+
+function showOrdersDelivery() {
+
+    var locationSelect = document.getElementById("chosenLocation");
+    var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
+
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?showOrdersDelivery=showOrdersDelivery&chosenLocation=" + chosenLocation;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+            var ordersForSpecificLocation = JSON.parse(this.responseText);
+            var orderForSpecificLocation = ordersForSpecificLocation.orderForSpecificLocation;
+
+
+
+            for (var a = 0; a < orderForSpecificLocation.length; a++) {
+
+                var order_id = orderForSpecificLocation[a].order_id;
+                var city = orderForSpecificLocation[a].city;
+
+                console.log(order_id + " " + city);
+
+
+
+            }
+
+
+        }
+    }
+}

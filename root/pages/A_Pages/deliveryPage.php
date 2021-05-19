@@ -59,200 +59,212 @@ $email = $row[3];
         </div>
     </nav>
     <section id="ordersCompleted" class="section">
+        <div id="fullContainerOfOrderCompleted" class="container">
 
-        <div id="ordersCompletedList" class="container">
-            <div class="row row-md">
+            <div class="row">
+                <div class="col">
+                    <div id="ordersCompletedList" class="container">
+                        <div class="row row-md">
 
-                <h1 class="adminH pt-3">Orders ready with respect to areas:</h1>
-            </div>
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Location
-                </div>
-                <div class="col orderHeader">
-                    Number of orders Completed
-                </div>
-                <div class="col orderHeader">
-                    Action
-                </div>
-            </div>
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Tyre
-                </div>
-                <div id="inTyre" class="col orderHeader">
+                            <h1 class="adminH pt-3">Orders ready with respect to areas:</h1>
+                        </div>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Location
+                            </div>
+                            <div class="col orderHeader">
+                                Number of orders Completed
+                            </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        </div>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Tyre
+                            </div>
+                            <div id="inTyre" class="col orderHeader">
 
-                    </div>
-                </div>
-            </div>
+                            </div>
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Bint Jbeil
-                </div>
-                <div id="inBintJbeil" class="col orderHeader">
+                        </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Bint Jbeil
+                            </div>
+                            <div id="inBintJbeil" class="col orderHeader">
 
-                    </div>
-                </div>
-            </div>
+                            </div>
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Saida
-                </div>
-                <div id="inSaida" class="col orderHeader">
+                        </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Saida
+                            </div>
+                            <div id="inSaida" class="col orderHeader">
 
-                    </div>
-                </div>
-            </div>
+                            </div>
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Beirut
-                </div>
-                <div id="inBeirut" class="col orderHeader">
+                        </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Beirut
+                            </div>
+                            <div id="inBeirut" class="col orderHeader">
 
-                    </div>
-                </div>
-            </div>
+                            </div>
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Nabatieh
-                </div>
-                <div id="inNabatieh" class="col orderHeader">
+                        </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Nabatieh
+                            </div>
+                            <div id="inNabatieh" class="col orderHeader">
 
-                    </div>
-                </div>
-            </div>
+                            </div>
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Jounieh
-                </div>
-                <div id="inJounieh" class="col orderHeader">
+                        </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Jounieh
+                            </div>
+                            <div id="inJounieh" class="col orderHeader">
 
-                    </div>
-                </div>
-            </div>
+                            </div>
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Byblos
-                </div>
-                <div id="inByblos" class="col orderHeader">
+                        </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Byblos
+                            </div>
+                            <div id="inByblos" class="col orderHeader">
 
-                    </div>
-                </div>
-            </div>
+                            </div>
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Tripoli
-                </div>
-                <div id="inTripoli" class="col orderHeader">
+                        </div>
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Tripoli
+                            </div>
+                            <div id="inTripoli" class="col orderHeader">
+
+                            </div>
+
+                        </div>
+
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Akkar
+                            </div>
+                            <div id="inAkkar" class="col orderHeader">
+
+                            </div>
+
+                        </div>
+                        <div class="row row-md">
+                            <div class="col orderHeader">
+                                Baalbeak
+                            </div>
+                            <div id="inBaalbeak" class="col orderHeader">
+
+                            </div>
+
+                        </div>
+                        <div id="lastRow" class="row row-md">
+                            <div class="col orderHeader">
+                                Bekaa
+                            </div>
+                            <div id="inBekaa" class="col orderHeader">
+
+                            </div>
+
+                        </div>
 
                     </div>
                 </div>
-            </div>
+                <div class="col">
 
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Akkar
-                </div>
-                <div id="inAkkar" class="col orderHeader">
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
+                    <div class="container">
+                        <div class="row">
+                            <div class="col">
+
+                                <div id="rowOfOptionsInDeliveryAccount" class="container">
+                                    <div class="row">
+                                        <div class="col">
+                                            <p>Select a delivery location:</p>
+                                            <select id="chosenLocation" class="form form-control">
+                                                <option value="tyre">Tyre</option>
+                                                <option value="bintJbeil">Bint Jbeil</option>
+                                                <option value="saida">Saida</option>
+                                                <option value="beirut">Beirut</option>
+                                                <option value="nabatieh">Nabatieh</option>
+                                                <option value="jounieh">Jounieh</option>
+                                                <option value="byblos">Byblos</option>
+                                                <option value="tripoli">Tripoli</option>
+                                                <option value="akkar">Akkar</option>
+                                                <option value="baalbeck">Baalbeck</option>
+                                                <option value="bekaa">Bekaa</option>
+                                            </select>
+
+                                            <div class="form">
+                                                <a id="buttonOfShowOrdersWithRespectToLocation" data-target="#showOrdersForDelivery" data-toggle="modal" type="button" onclick="showOrdersDelivery()" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show Orders</a>
+                                                <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start Delivery</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col">
+                                <div id="onDeliveryOrdersContainer">
+                                    <div class="row">
+                                        <div class="col headerColOfOnDelivery">
+                                            Order id
+                                        </div>
+                                        <div class="col headerColOfOnDelivery">
+
+                                            Location
+                                        </div>
+                                        <div class="col headerColOfOnDelivery">
+
+                                            action
+                                        </div>
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+
 
                     </div>
+
+
+
+
                 </div>
+
             </div>
-            <div class="row row-md">
-                <div class="col orderHeader">
-                    Baalbeak
-                </div>
-                <div id="inBaalbeak" class="col orderHeader">
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
 
-                    </div>
-                </div>
-            </div>
-            <div id="lastRow" class="row row-md">
-                <div class="col orderHeader">
-                    Bekaa
-                </div>
-                <div id="inBekaa" class="col orderHeader">
 
-                </div>
-                <div class="col orderHeader">
-                    <div class="col buttonBox">
-                        <a type="button" onclick="" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show</a>
-                        <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start</a>
-
-                    </div>
-                </div>
-            </div>
 
         </div>
-
-
 
     </section>
 
@@ -460,7 +472,26 @@ $email = $row[3];
 
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="modal fade" id="showOrdersForDelivery">
+                    <div id="myCart" class="modal-dialog modal-lg " style="border-color: black;">
+                        <div id="myCart2" class="modal-content border border-primary">
+                            <div id="cartHeader" class="modal-header">
+                                <h3 id="myCartHeader">Orders</h3>
+                            </div>
+                            <div id="showOrdersDelivery" class="modal-body cartContent">
 
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
     <footer class="bg text-center text-white" id="about" style=" background-color:black;">

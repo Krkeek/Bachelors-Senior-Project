@@ -687,3 +687,24 @@ if (isset($_GET['completedOrdersForDelivery']) == "completedOrdersForDelivery") 
     $ordersReady->orderReady = $data1;
     echo json_encode($ordersReady);
 }
+
+if (isset($_GET['showOrdersDelivery']) == "showOrdersDelivery") {
+    $choosenLocation = $_GET['chosenLocation'];
+    $ordersForSpecificLocation = new stdClass();
+    require_once 'connection.php';
+
+    $result1 = mysqli_query($con, "SELECT `order_id`,`city` FROM `ordertable` INNER JOIN customer ON ordertable.username=customer.username WHERE city='$choosenLocation'");
+    $num = mysqli_num_rows($result1);
+    if ($num != 0) {
+        while ($row1 = mysqli_fetch_assoc($result1)) {
+            $data1[] = $row1;
+        }
+        $ordersForSpecificLocation->orderForSpecificLocation = $data1;
+    } else {
+        $data2 = array(0 => 'Empty');
+        $ordersForSpecificLocation->orderForSpecificLocation = $data2;
+    }
+
+
+    echo json_encode($ordersForSpecificLocation);
+}

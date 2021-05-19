@@ -157,4 +157,42 @@
 
 #lastRow {
     border-bottom: 1px solid #3366ff;
+    margin-bottom: 20px;
+}
+
+#rowOfOptionsInDeliveryAccount {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-size: 30px;
+    color: white;
+    font-weight: bold;
+    background-color: #3366ff;
+    border-radius: 5px;
+    width: 400px;
+    height: 200px;
+    margin-top: 90px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+#onDeliveryOrdersContainer {
+    height: 100%;
+    width: 100%;
+}
+
+.headerColOfOnDelivery {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid gainsboro;
+    border-radius: 5px;
+    color: white;
+    size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#buttonOfShowOrdersWithRespectToLocation {
+    border-color: white !important;
 }
