@@ -488,6 +488,7 @@ function completedOrdersForDelivery() {
             var inAkkar = 0;
             var inBaalbeak = 0;
             var inBekaa = 0;
+            var html = " ";
 
             for (var a = 0; a < orderReady.length; a++) {
                 var order_id = orderReady[a].order_id;
@@ -536,6 +537,17 @@ function completedOrdersForDelivery() {
                         inBekaa++;
                         break;
 
+
+                }
+                var locationSelect = document.getElementById("chosenLocation");
+                var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
+
+                if (city == chosenLocation) {
+                    html += `
+                        
+                        <p> ${order_id},${firstName},${lastName},${phone},${address},${totalCost},${dateOfOrder} </p>
+                        
+                        `
 
                 }
 
