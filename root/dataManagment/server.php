@@ -680,7 +680,7 @@ if (isset($_GET['completedOrdersForDelivery']) == "completedOrdersForDelivery") 
     require_once 'connection.php';
 
 
-    $result1 = mysqli_query($con, "SELECT `order_id`,`firstname`,`lastname`,`phone`,`city`,`address`,`total_cost`,`date_of_order` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready';");
+    $result1 = mysqli_query($con, "SELECT `city` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready';");
     while ($row1 = mysqli_fetch_assoc($result1)) {
         $data1[] = $row1;
     }
@@ -693,18 +693,11 @@ if (isset($_GET['showOrdersDelivery']) == "showOrdersDelivery") {
     $ordersForSpecificLocation = new stdClass();
     require_once 'connection.php';
 
-    $result1 = mysqli_query($con, "SELECT `order_id`,`city` FROM `ordertable` INNER JOIN customer ON ordertable.username=customer.username WHERE city='$choosenLocation'");
-    $num = mysqli_num_rows($result1);
-    if ($num != 0) {
-        while ($row1 = mysqli_fetch_assoc($result1)) {
-            $data1[] = $row1;
-        }
-        $ordersForSpecificLocation->orderForSpecificLocation = $data1;
-    } else {
-        $data2 = array(0 => 'Empty');
-        $ordersForSpecificLocation->orderForSpecificLocation = $data2;
+    $result1 = mysqli_query($con, "SELECT `order_id`,`firstname`,`lastname`,`phone`,`city`,`address`,`total_cost`,`date_of_order` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready';");
+
+    while ($row1 = mysqli_fetch_assoc($result1)) {
+        $data1[] = $row1;
     }
-
-
+    $ordersForSpecificLocation->orderForSpecificLocation = $data1;
     echo json_encode($ordersForSpecificLocation);
 }

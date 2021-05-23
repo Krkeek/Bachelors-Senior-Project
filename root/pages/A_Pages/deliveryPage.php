@@ -481,8 +481,42 @@ $email = $row[3];
                             <div id="cartHeader" class="modal-header">
                                 <h3 id="myCartHeader">Orders</h3>
                             </div>
-                            <div id="showOrdersDelivery" class="modal-body cartContent">
 
+                            <div class="modal-body cartContent">
+                                <div id="tableOfShowOrdersDelivery">
+                                    <div class="row">
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Order id
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Date
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Name
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Phone #
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            City
+
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Address
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Cost
+                                        </div>
+
+
+                                    </div>
+                                    </br>
+                                </div>
+
+                                <div id="showOrdersDelivery">
+
+
+                                </div>
                             </div>
 
                         </div>

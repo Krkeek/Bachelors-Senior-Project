@@ -196,3 +196,15 @@
 #buttonOfShowOrdersWithRespectToLocation {
     border-color: white !important;
 }
+
+.colOfShowOrdersDelivery {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ECF0F1;
+    border-radius: 5px;
+}
+
+#tableOfShowOrdersDelivery {
+    font-weight: bolder;
+}

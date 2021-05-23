@@ -488,18 +488,11 @@ function completedOrdersForDelivery() {
             var inAkkar = 0;
             var inBaalbeak = 0;
             var inBekaa = 0;
-            var html = " ";
+
 
             for (var a = 0; a < orderReady.length; a++) {
-                var order_id = orderReady[a].order_id;
-                var firstName = orderReady[a].firstname;
-                var lastName = orderReady[a].lastname;
-                var phone = orderReady[a].phone;
-                var city = orderReady[a].city;
-                var address = orderReady[a].address;
-                var totalCost = orderReady[a].total_cost;
-                var dateOfOrder = orderReady[a].date_of_order;
 
+                var city = orderReady[a].city;
 
                 switch (city) {
 
@@ -539,17 +532,7 @@ function completedOrdersForDelivery() {
 
 
                 }
-                var locationSelect = document.getElementById("chosenLocation");
-                var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
 
-                if (city == chosenLocation) {
-                    html += `
-                        
-                        <p> ${order_id},${firstName},${lastName},${phone},${address},${totalCost},${dateOfOrder} </p>
-                        
-                        `
-
-                }
 
 
             }
@@ -576,7 +559,7 @@ function showOrdersDelivery() {
 
     var locationSelect = document.getElementById("chosenLocation");
     var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
-
+    var html = '';
     var ajax = new XMLHttpRequest();
     var method = "GET";
     var url = "../../dataManagment/server.php?showOrdersDelivery=showOrdersDelivery&chosenLocation=" + chosenLocation;
@@ -594,13 +577,56 @@ function showOrdersDelivery() {
             for (var a = 0; a < orderForSpecificLocation.length; a++) {
 
                 var order_id = orderForSpecificLocation[a].order_id;
+                var firstName = orderForSpecificLocation[a].firstname;
+                var lastName = orderForSpecificLocation[a].lastname;
+                var phone = orderForSpecificLocation[a].phone;
                 var city = orderForSpecificLocation[a].city;
+                var address = orderForSpecificLocation[a].address;
+                var totalCost = orderForSpecificLocation[a].total_cost;
+                var dateOfOrder = orderForSpecificLocation[a].date_of_order;
 
-                console.log(order_id + " " + city);
 
+                if (city == chosenLocation) {
+
+
+                    html += `
+                    
+                   <div class="row">
+ <div class="col colOfShowOrdersDelivery">
+                ${order_id}
+                 </div>
+                 <div class="col colOfShowOrdersDelivery">
+                ${dateOfOrder}
+                 </div>
+                 <div class="col colOfShowOrdersDelivery">
+${firstName} ${lastName}
+             </div>
+            <div class="col colOfShowOrdersDelivery">
+${phone}
+                </div>
+                    <div class="col colOfShowOrdersDelivery">
+${city}
+
+                 </div>
+                 <div class="col colOfShowOrdersDelivery">
+${address}
+                </div>
+                  <div class="col colOfShowOrdersDelivery">
+    ${totalCost}
+                  </div>
+  
+                </div>
+                </br>
+                    `
+
+
+
+                }
 
 
             }
+
+            document.getElementById('showOrdersDelivery').innerHTML = html;
 
 
         }
