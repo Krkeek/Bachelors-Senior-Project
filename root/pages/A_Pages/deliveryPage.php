@@ -525,6 +525,61 @@ $email = $row[3];
         </div>
     </div>
 
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="modal fade" id="orderInfoModal">
+                    <div id="myCart" class="modal-dialog modal-lg " style="border-color: black; height:230px; ">
+                        <div id="myCart2" class="modal-content border border-primary">
+                            <div id="cartHeader" class="modal-header">
+                                <h3 id="myCartHeader">Order Information</h3>
+                            </div>
+
+                            <div class="modal-body cartContent" style="overflow-y: unset !important;">
+                                <div id="tableOfShowOrdersDelivery">
+                                    <div class="row">
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Order id
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Date
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Name
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Phone #
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            City
+
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Address
+                                        </div>
+                                        <div class="col colOfShowOrdersDelivery">
+                                            Cost ($)
+                                        </div>
+
+
+                                    </div>
+                                    </br>
+                                </div>
+
+                                <div id="orderInformation">
+
+
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <footer class="bg text-center text-white" id="about" style=" background-color:black;">
         <!-- Grid container -->

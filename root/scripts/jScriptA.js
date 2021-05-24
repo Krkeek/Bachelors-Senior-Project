@@ -793,7 +793,7 @@ function chosenOption(order_id) {
     switch (chosenOption) {
         case 'show':
             orderInformation(order_id);
-            $('#showOrdersForDelivery').modal('show');
+            $('#orderInfoModal').modal('show');
             break;
 
         case 'delivered':
@@ -878,7 +878,7 @@ ${address}
 
                 }
 
-                document.getElementById('showOrdersDelivery').innerHTML = html1;
+                document.getElementById('orderInformation').innerHTML = html1;
 
             }
 
