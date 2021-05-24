@@ -703,7 +703,7 @@ if (isset($_GET['startDelivery']) == "startDelivery") {
     $choosenLocation = $_GET['chosenLocation'];
     require_once 'connection.php';
 
-    $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivering...',`manufacture_status`='Finished' WHERE city = '$choosenLocation' && `delivery_status` = 'Waiting...';");
+    $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivering...',`manufacture_status`='Finished' WHERE city = '$choosenLocation' && `delivery_status` = 'Waiting...' && `manufacture_status` = 'Ready' ;");
 }
 
 
