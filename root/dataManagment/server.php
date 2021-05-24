@@ -393,7 +393,7 @@ if (isset($_POST['cartItemInsertion']) == "cartItemInsertion") {
     $price = $obj[0]['price'];
 
     $user = $_SESSION['username'];
-    $query = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No');";
+    $query = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered` ,`returns`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No','false');";
     mysqli_query($con, $query);
 }
 
@@ -819,4 +819,22 @@ if (isset($_GET['shop']) == "shop") {
     }
     $items->item = $data1;
     echo json_encode($items);
+}
+
+if (isset($_GET['addToCartFromShop']) == "addToCartFromShop") {
+    require_once 'connection.php';
+    $product_id = $_GET['product_id'];
+    $result1 = mysqli_query($con, "SELECT * FROM `product` WHERE `product_id` = '$product_id';");
+    $row1 = mysqli_fetch_assoc($result1);
+
+    $type = $row1['type'];
+    $size = $row1['size'];
+    $color = $row1['color'];
+    $pocketSticker = $row1['pocket_sticker'];
+    $frontSticker = $row1['front_sticker'];
+    $backSticker = $row1['back_sticker'];
+    $price = $row1['price'];
+    $user = $_SESSION['username'];
+    $result2 = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered`,`returns`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No','true');";
+    mysqli_query($con, $result2);
 }

@@ -1352,6 +1352,7 @@ function shop() {
             var item = items.item;
             var html1 = "";
             for (var a = 0; a < item.length; a++) {
+                var product_id = item[a].product_id;
                 var type = item[a].type;
                 var size = item[a].size;
                 var color = item[a].color;
@@ -1386,7 +1387,7 @@ function shop() {
                     "<br /><span style='font-weight:bold;'>Price: </span>" +
                     price +
                     "$</p></div><div id='trashCol' class='col-2 orderItem'>";
-                html1 += "<button type='button' class='btn btn-success custom-btn greenB'>Add to Cart</button>";
+                html1 += "<button data-toggle='modal' data-target='#addedSuccessfully'  onclick='addToCartFromShop(this.id)'  id='" + product_id + "' type='button' class='btn btn-success custom-btn greenB'>Add to Cart</button>";
 
                 html1 += " </div></div></div>";
                 html1 += "<br/>";
@@ -1398,5 +1399,19 @@ function shop() {
 
 
     };
+
+}
+
+function addToCartFromShop(product_id) {
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?addToCartFromShop=addToCartFromShop&product_id=" + product_id;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {}
+    }
+
 
 }
