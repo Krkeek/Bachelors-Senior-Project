@@ -367,17 +367,22 @@ if (isset($_POST['reg_admin'])) {
 //APPROVE ORDER
 if (isset($_POST['approveOrder']) == "approveOrder") {
     $u = $_POST['u'];
+    $username =  $_SESSION['username'];
     $query = "UPDATE `ordertable` SET `manufacture_status`='Approved' WHERE `order_id`='$u';";
     mysqli_query($con, $query);
-    $action = " ";
+
+    $query2 = "INSERT INTO `logs`(`username`, `date_of_edit`, `order_id`, `action`) VALUES ('$username',CURRENT_TIMESTAMP,'$u','Approved an Order');";
+    mysqli_query($con, $query2);
 }
 
 //REJECT ORDER
 if (isset($_POST['rejectOrder']) == "rejectOrder") {
     $u = $_POST['u'];
+    $username =  $_SESSION['username'];
     $query = "UPDATE `ordertable` SET `manufacture_status`='Rejected' WHERE `order_id`='$u';";
     mysqli_query($con, $query);
-    $action = " ";
+    $query2 = "INSERT INTO `logs`(`username`, `date_of_edit`, `order_id`, `action`) VALUES ('$username',CURRENT_TIMESTAMP,'$u','Rejected an Order');";
+    mysqli_query($con, $query2);
 }
 
 //ADD TO CART
@@ -649,7 +654,9 @@ if (isset($_POST['startFactory']) == "startFactory") {
     $u = $_POST['u'];
     $query = "UPDATE `ordertable` SET `manufacture_status`='Manufacturing...' WHERE `order_id`='$u';";
     mysqli_query($con, $query);
-    $action = " ";
+    $username =  $_SESSION['username'];
+    $query2 = "INSERT INTO `logs`(`username`, `date_of_edit`, `order_id`, `action`) VALUES ('$username',CURRENT_TIMESTAMP,'$u','Started Manufacturing');";
+    mysqli_query($con, $query2);
 }
 
 //Finish factory
@@ -657,7 +664,9 @@ if (isset($_POST['finishFactory']) == "finishFactory") {
     $u = $_POST['u'];
     $query = "UPDATE `ordertable` SET `manufacture_status`='Ready' WHERE `order_id`='$u';";
     mysqli_query($con, $query);
-    $action = " ";
+    $username =  $_SESSION['username'];
+    $query2 = "INSERT INTO `logs`(`username`, `date_of_edit`, `order_id`, `action`) VALUES ('$username',CURRENT_TIMESTAMP,'$u','Finished Manufacturing');";
+    mysqli_query($con, $query2);
 }
 
 //Show All Orders
@@ -702,6 +711,16 @@ if (isset($_GET['completedOrdersForDelivery']) == "completedOrdersForDelivery") 
 if (isset($_GET['startDelivery']) == "startDelivery") {
     $choosenLocation = $_GET['chosenLocation'];
     require_once 'connection.php';
+
+    $username =  $_SESSION['username'];
+    $query2 = "SELECT `order_id` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready' && `delivery_status`='Waiting...' && `city`='Tyre';";
+    $result2 = mysqli_query($con, $query2);
+    while ($row1 = mysqli_fetch_array($result2)) {
+        $x = $row1[0];
+        $query0 = "INSERT INTO `logs`(`username`, `date_of_edit`, `order_id`, `action`) VALUES ('$username',CURRENT_TIMESTAMP,'$x','Started Delivering');";
+        mysqli_query($con, $query0);
+    }
+
 
     $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivering...',`manufacture_status`='Finished' WHERE city = '$choosenLocation' && `delivery_status` = 'Waiting...' && `manufacture_status` = 'Ready' ;");
 }
@@ -798,6 +817,10 @@ if (isset($_GET['orderDelivered']) == "orderDelivered") {
 
     $order_id = $_GET['orderId'];
     $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivered' WHERE order_id = '$order_id';");
+
+    $username =  $_SESSION['username'];
+    $query2 = "INSERT INTO `logs`(`username`, `date_of_edit`, `order_id`, `action`) VALUES ('$username',CURRENT_TIMESTAMP,'$order_id','Delivered the Order');";
+    mysqli_query($con, $query2);
 }
 
 if (isset($_GET['orderReturned']) == "orderReturned") {
@@ -805,6 +828,9 @@ if (isset($_GET['orderReturned']) == "orderReturned") {
 
     $order_id = $_GET['orderId'];
     $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Returned' WHERE order_id = '$order_id';");
+    $username =  $_SESSION['username'];
+    $query2 = "INSERT INTO `logs`(`username`, `date_of_edit`, `order_id`, `action`) VALUES ('$username',CURRENT_TIMESTAMP,'$order_id','Returned the Order');";
+    mysqli_query($con, $query2);
 }
 
 
