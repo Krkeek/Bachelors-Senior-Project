@@ -33,7 +33,7 @@ $userr = $row[6];
 
 </head>
 
-<body>
+<body onload="shop()">
 
 
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: black;">
@@ -407,7 +407,15 @@ $userr = $row[6];
 
     </section>
     <section id="returns" class="section">
-        <h1 class="Font">Shop</h1>
+
+        <div id="shop">
+
+
+        </div>
+
+
+
+
     </section>
 
     <section id="accountSettings" class="section">

@@ -507,7 +507,7 @@ function startDelivery() {
 
 
 function showOrdersDelivery() {
-
+    document.getElementById('showOrdersDelivery').innerHTML = " ";
     var locationSelect = document.getElementById("chosenLocation");
     var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
     var html1 = '';
@@ -601,7 +601,7 @@ function onloadDelivery() {
 
     var locationSelect = document.getElementById("chosenLocation");
     var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
-    var html2 = '';
+    var html2 = ' ';
     var ajax = new XMLHttpRequest();
     var method = "GET";
     var url = "../../dataManagment/server.php?onloadDelivery=onloadDelivery&chosenLocation=" + chosenLocation;
@@ -719,6 +719,7 @@ function onloadDelivery() {
             if (deliveryingOrder == 'Empty') {
 
 
+
             } else {
 
                 for (var a = 0; a < deliveryingOrder.length; a++) {
@@ -767,11 +768,11 @@ function onloadDelivery() {
                 `
 
                 }
-                document.getElementById('pushInfoDeliverying').innerHTML = html2;
-
 
 
             }
+
+            document.getElementById('pushInfoDeliverying').innerHTML = html2;
 
 
 
@@ -797,9 +798,11 @@ function chosenOption(order_id) {
             break;
 
         case 'delivered':
+            orderDelivered(order_id);
             break;
 
         case 'returned':
+            orderReturned(order_id);
             break;
 
     }
@@ -889,6 +892,42 @@ ${address}
 
 
         }
+    }
+
+}
+
+function orderDelivered(order_id) {
+
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?orderDelivered=orderDelivered&orderId=" + order_id;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            onloadDelivery();
+            $('#deliveredDone').modal('show');
+        }
+
+    }
+
+}
+
+function orderReturned(order_id) {
+
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?orderReturned=orderReturned&orderId=" + order_id;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+            onloadDelivery();
+            $('#orderReturned').modal('show');
+        }
+
     }
 
 }

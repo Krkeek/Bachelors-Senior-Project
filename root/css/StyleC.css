@@ -118,9 +118,10 @@
 }
 
 #returns {
-    background-color: darkgray;
-    align-items: center;
-    justify-content: center;
+    background-color: whitesmoke;
+    padding: 50px;
+    padding-top: 70px;
+    display: flex;
 }
 
 #accountSettings {
@@ -434,4 +435,10 @@
 
 #loginButton {
     margin-bottom: 10px;
+}
+
+#shop {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
 }

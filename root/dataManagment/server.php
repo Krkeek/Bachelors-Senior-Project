@@ -703,7 +703,7 @@ if (isset($_GET['startDelivery']) == "startDelivery") {
     $choosenLocation = $_GET['chosenLocation'];
     require_once 'connection.php';
 
-    $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivering...',`manufacture_status`='Finished' WHERE city = '$choosenLocation';");
+    $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivering...',`manufacture_status`='Finished' WHERE city = '$choosenLocation' && `delivery_status` = 'Waiting...';");
 }
 
 
@@ -789,4 +789,34 @@ if (isset($_GET['orderInformation']) == "orderInformation") {
     }
 
     echo json_encode($orderInformation);
+}
+
+
+
+if (isset($_GET['orderDelivered']) == "orderDelivered") {
+    require_once 'connection.php';
+
+    $order_id = $_GET['orderId'];
+    $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivered' WHERE order_id = '$order_id';");
+}
+
+if (isset($_GET['orderReturned']) == "orderReturned") {
+    require_once 'connection.php';
+
+    $order_id = $_GET['orderId'];
+    $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Returned' WHERE order_id = '$order_id';");
+}
+
+
+if (isset($_GET['shop']) == "shop") {
+
+    $items = new stdClass();
+    require_once 'connection.php';
+    $result1 = mysqli_query($con, "SELECT * FROM `product` INNER JOIN orderproducts ON product.product_id = orderproducts.product_id JOIN ordertable ON orderproducts.order_id = ordertable.order_id WHERE`delivery_status` = 'returned';");
+    $data1 = array();
+    while ($row1 = mysqli_fetch_assoc($result1)) {
+        $data1[] = $row1;
+    }
+    $items->item = $data1;
+    echo json_encode($items);
 }

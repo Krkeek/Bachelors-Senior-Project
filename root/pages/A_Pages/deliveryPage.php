@@ -580,7 +580,42 @@ $email = $row[3];
         </div>
     </div>
 
+    <div class="container">
 
+        <div class="row">
+            <div class="col">
+                <div class="modal fade " id="deliveredDone">
+                    <div class="modal-dialog  ">
+                        <div class="modal-content border border-primary">
+                            <div class="modal-header center">
+                                <h5>Order <span style="color: #3366ff;">Delivered</span></h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
+    <div class="container">
+
+        <div class="row">
+            <div class="col">
+                <div class="modal fade " id="orderReturned">
+                    <div class="modal-dialog  ">
+                        <div class="modal-content border border-primary">
+                            <div class="modal-header center">
+                                <h5>Order <span style="color:gray;">Returned</span></h5>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        </form>
+    </div>
     <footer class="bg text-center text-white" id="about" style=" background-color:black;">
         <!-- Grid container -->
         <div class="container p-4 pb-0">
