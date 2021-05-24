@@ -27,7 +27,7 @@ $email = $row[3];
     <title>U-Style</title>
 </head>
 
-<body onload="completedOrdersForDelivery()">
+<body onload="onloadDelivery()">
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: black;">
         <a class="navbar-brand" href="#">
             <img width="40px" src="../../images/cssPhotos/Logo2.png" alt="Logo">
@@ -214,7 +214,7 @@ $email = $row[3];
 
                                             <div class="form">
                                                 <a id="buttonOfShowOrdersWithRespectToLocation" data-target="#showOrdersForDelivery" data-toggle="modal" type="button" onclick="showOrdersDelivery()" class="btn btn-primary custom-btn blueB" data-toggle="modal" data-target="#">Show Orders</a>
-                                                <a type="button" onclick="" class="btn btn-success custom-btn greenB">Start Delivery</a>
+                                                <a type="button" onclick="startDelivery()" class="btn btn-success custom-btn greenB">Start Delivery</a>
                                             </div>
                                         </div>
                                     </div>
@@ -225,7 +225,6 @@ $email = $row[3];
 
                         </div>
                         <div class="row">
-
                             <div class="col">
                                 <div id="onDeliveryOrdersContainer">
                                     <div class="row">
@@ -245,12 +244,11 @@ $email = $row[3];
 
 
                                 </div>
-
-
                             </div>
+                        </div>
+                        <div id="pushInfoDeliverying">
 
                         </div>
-
 
                     </div>
 

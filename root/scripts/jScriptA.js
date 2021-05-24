@@ -474,80 +474,7 @@ function completedOrdersForDelivery() {
     ajax.onreadystatechange = function() {
         if (this.readyState === 4 && this.status === 200) {
 
-            var ordersReady = JSON.parse(this.responseText);
-            var orderReady = ordersReady.orderReady;
 
-            var inTyre = 0;
-            var inBintJbeil = 0;
-            var inSaida = 0;
-            var inBeirut = 0;
-            var inNabatieh = 0;
-            var inJounieh = 0;
-            var inByblos = 0;
-            var inTripoli = 0;
-            var inAkkar = 0;
-            var inBaalbeak = 0;
-            var inBekaa = 0;
-
-
-            for (var a = 0; a < orderReady.length; a++) {
-
-                var city = orderReady[a].city;
-
-                switch (city) {
-
-                    case 'tyre':
-                        inTyre++;
-                        break;
-                    case 'bintJbeil':
-                        inBintJbeil++;
-                        break;
-                    case 'saida':
-                        inSaida++;
-                        break;
-                    case 'beirut':
-                        inBeirut++;
-                        break;
-                    case 'nabatieh':
-                        inNabatieh++;
-                        break;
-                    case 'jounieh':
-                        inJounieh++;
-                        break;
-                    case 'byblos':
-                        inByblos++;
-                        break;
-                    case 'tripoli':
-                        inTripoli++;
-                        break;
-                    case 'akkar':
-                        inAkkar++;
-                        break;
-                    case 'baalbeck':
-                        inBaalbeak++;
-                        break;
-                    case 'bekaa':
-                        inBekaa++;
-                        break;
-
-
-                }
-
-
-
-            }
-
-            document.getElementById("inTyre").innerHTML = inTyre;
-            document.getElementById("inBintJbeil").innerHTML = inBintJbeil;
-            document.getElementById("inSaida").innerHTML = inSaida;
-            document.getElementById("inBeirut").innerHTML = inBeirut;
-            document.getElementById("inNabatieh").innerHTML = inNabatieh;
-            document.getElementById("inJounieh").innerHTML = inJounieh;
-            document.getElementById("inByblos").innerHTML = inByblos;
-            document.getElementById("inTripoli").innerHTML = inTripoli;
-            document.getElementById("inAkkar").innerHTML = inAkkar;
-            document.getElementById("inBaalbeak").innerHTML = inBaalbeak;
-            document.getElementById("inBekaa").innerHTML = inBekaa;
 
         }
 
@@ -555,11 +482,35 @@ function completedOrdersForDelivery() {
 }
 //#endregion
 
+
+function startDelivery() {
+
+
+    var locationSelect = document.getElementById("chosenLocation");
+    var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?startDelivery=startDelivery&chosenLocation=" + chosenLocation;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+            onloadDelivery();
+
+        }
+
+    }
+
+}
+
+
 function showOrdersDelivery() {
 
     var locationSelect = document.getElementById("chosenLocation");
     var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
-    var html = '';
+    var html1 = '';
     var ajax = new XMLHttpRequest();
     var method = "GET";
     var url = "../../dataManagment/server.php?showOrdersDelivery=showOrdersDelivery&chosenLocation=" + chosenLocation;
@@ -573,23 +524,26 @@ function showOrdersDelivery() {
             var orderForSpecificLocation = ordersForSpecificLocation.orderForSpecificLocation;
 
 
-
-            for (var a = 0; a < orderForSpecificLocation.length; a++) {
-
-                var order_id = orderForSpecificLocation[a].order_id;
-                var firstName = orderForSpecificLocation[a].firstname;
-                var lastName = orderForSpecificLocation[a].lastname;
-                var phone = orderForSpecificLocation[a].phone;
-                var city = orderForSpecificLocation[a].city;
-                var address = orderForSpecificLocation[a].address;
-                var totalCost = orderForSpecificLocation[a].total_cost;
-                var dateOfOrder = orderForSpecificLocation[a].date_of_order;
+            if (orderForSpecificLocation == 'Empty') {
 
 
-                if (city == chosenLocation) {
+            } else {
+                for (var a = 0; a < orderForSpecificLocation.length; a++) {
+
+                    var order_id = orderForSpecificLocation[a].order_id;
+                    var firstName = orderForSpecificLocation[a].firstname;
+                    var lastName = orderForSpecificLocation[a].lastname;
+                    var phone = orderForSpecificLocation[a].phone;
+                    var city = orderForSpecificLocation[a].city;
+                    var address = orderForSpecificLocation[a].address;
+                    var totalCost = orderForSpecificLocation[a].total_cost;
+                    var dateOfOrder = orderForSpecificLocation[a].date_of_order;
 
 
-                    html += `
+                    if (city == chosenLocation) {
+
+
+                        html1 += `
                     
                    <div class="row">
  <div class="col colOfShowOrdersDelivery">
@@ -621,14 +575,320 @@ ${address}
 
 
 
+                    }
+
+
                 }
+
+                document.getElementById('showOrdersDelivery').innerHTML = html1;
+
+            }
+
+
+
+
+
+        }
+
+    }
+
+
+
+
+}
+
+function onloadDelivery() {
+
+    var locationSelect = document.getElementById("chosenLocation");
+    var chosenLocation = locationSelect.options[locationSelect.selectedIndex].value;
+    var html2 = '';
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?onloadDelivery=onloadDelivery&chosenLocation=" + chosenLocation;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+            var onloadDelivery = JSON.parse(this.responseText);
+            var deliveryOrderReady = onloadDelivery.deliveryOrderReady;
+            var deliveryingOrder = onloadDelivery.deliveryingOrder;
+
+            var inTyre = 0;
+            var inBintJbeil = 0;
+            var inSaida = 0;
+            var inBeirut = 0;
+            var inNabatieh = 0;
+            var inJounieh = 0;
+            var inByblos = 0;
+            var inTripoli = 0;
+            var inAkkar = 0;
+            var inBaalbeak = 0;
+            var inBekaa = 0;
+
+
+
+
+            if (deliveryOrderReady == 'Empty') {
+
+                document.getElementById("inTyre").innerHTML = inTyre;
+                document.getElementById("inBintJbeil").innerHTML = inBintJbeil;
+                document.getElementById("inSaida").innerHTML = inSaida;
+                document.getElementById("inBeirut").innerHTML = inBeirut;
+                document.getElementById("inNabatieh").innerHTML = inNabatieh;
+                document.getElementById("inJounieh").innerHTML = inJounieh;
+                document.getElementById("inByblos").innerHTML = inByblos;
+                document.getElementById("inTripoli").innerHTML = inTripoli;
+                document.getElementById("inAkkar").innerHTML = inAkkar;
+                document.getElementById("inBaalbeak").innerHTML = inBaalbeak;
+                document.getElementById("inBekaa").innerHTML = inBekaa;
+
+            } else {
+
+
+
+
+                for (var a = 0; a < deliveryOrderReady.length; a++) {
+
+                    var city = deliveryOrderReady[a].city;
+
+                    switch (city) {
+
+                        case 'tyre':
+                            inTyre++;
+                            break;
+                        case 'bintJbeil':
+                            inBintJbeil++;
+                            break;
+                        case 'saida':
+                            inSaida++;
+                            break;
+                        case 'beirut':
+                            inBeirut++;
+                            break;
+                        case 'nabatieh':
+                            inNabatieh++;
+                            break;
+                        case 'jounieh':
+                            inJounieh++;
+                            break;
+                        case 'byblos':
+                            inByblos++;
+                            break;
+                        case 'tripoli':
+                            inTripoli++;
+                            break;
+                        case 'akkar':
+                            inAkkar++;
+                            break;
+                        case 'baalbeck':
+                            inBaalbeak++;
+                            break;
+                        case 'bekaa':
+                            inBekaa++;
+                            break;
+
+
+                    }
+
+
+
+                }
+
+                document.getElementById("inTyre").innerHTML = inTyre;
+                document.getElementById("inBintJbeil").innerHTML = inBintJbeil;
+                document.getElementById("inSaida").innerHTML = inSaida;
+                document.getElementById("inBeirut").innerHTML = inBeirut;
+                document.getElementById("inNabatieh").innerHTML = inNabatieh;
+                document.getElementById("inJounieh").innerHTML = inJounieh;
+                document.getElementById("inByblos").innerHTML = inByblos;
+                document.getElementById("inTripoli").innerHTML = inTripoli;
+                document.getElementById("inAkkar").innerHTML = inAkkar;
+                document.getElementById("inBaalbeak").innerHTML = inBaalbeak;
+                document.getElementById("inBekaa").innerHTML = inBekaa;
 
 
             }
 
-            document.getElementById('showOrdersDelivery').innerHTML = html;
+
+
+
+
+
+            if (deliveryingOrder == 'Empty') {
+
+
+            } else {
+
+                for (var a = 0; a < deliveryingOrder.length; a++) {
+
+                    var order_id = deliveryingOrder[a].order_id;
+                    var city = deliveryingOrder[a].city;
+
+                    html2 += `
+                
+                    <div class="row">
+  <div class="col">
+    <div id="onDeliveryOrdersContainer">
+      <div class="row">
+        <div class="col ColOfOnDelivery">
+          ${order_id}
+        </div>
+        <div class="col ColOfOnDelivery">
+
+          ${city}
+        </div>
+        <div class="col ColOfOnDelivery">
+          <div class='row'>
+         
+ <select name='${order_id}'  onchange="chosenOption(this.name)" id="${order_id}" class="custom-select custom-select-sm selectOptionInDelivery ">
+                                                <option value="selectOption">Select Option</option>
+                                                <option value="show">Show</option>
+                                                <option value="delivered">Delivered</option>
+                                                <option value="returned">Returned</option>
+                                               
+                                            </select>
+
+          </div>
+
+
+
+
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+</div>
+                
+                
+                `
+
+                }
+                document.getElementById('pushInfoDeliverying').innerHTML = html2;
+
+
+
+            }
+
+
+
+
+        }
+
+
+
+
+
+    }
+}
+
+function chosenOption(order_id) {
+
+    var optionSelect = document.getElementById(order_id);
+    var chosenOption = optionSelect.options[optionSelect.selectedIndex].value;
+
+    switch (chosenOption) {
+        case 'show':
+            orderInformation(order_id);
+            $('#showOrdersForDelivery').modal('show');
+            break;
+
+        case 'delivered':
+            break;
+
+        case 'returned':
+            break;
+
+    }
+
+
+    optionSelect.selectedIndex = 0;
+
+}
+
+function orderInformation(order_id) {
+
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?orderInformation=orderInformation&orderId=" + order_id;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+
+            var orderInformation = JSON.parse(this.responseText);
+            var orderInformationn = orderInformation.orderInformationn;
+            var html1 = '';
+
+            if (orderInformationn == 'Empty') {
+
+
+            } else {
+                for (var a = 0; a < orderInformationn.length; a++) {
+
+                    var order_id = orderInformationn[a].order_id;
+                    var firstName = orderInformationn[a].firstname;
+                    var lastName = orderInformationn[a].lastname;
+                    var phone = orderInformationn[a].phone;
+                    var city = orderInformationn[a].city;
+                    var address = orderInformationn[a].address;
+                    var totalCost = orderInformationn[a].total_cost;
+                    var dateOfOrder = orderInformationn[a].date_of_order;
+
+
+                    html1 += `
+                    
+                   <div class="row">
+ <div class="col colOfShowOrdersDelivery">
+                ${order_id}
+                 </div>
+                 <div class="col colOfShowOrdersDelivery">
+                ${dateOfOrder}
+                 </div>
+                 <div class="col colOfShowOrdersDelivery">
+${firstName} ${lastName}
+             </div>
+            <div class="col colOfShowOrdersDelivery">
+${phone}
+                </div>
+                    <div class="col colOfShowOrdersDelivery">
+${city}
+
+                 </div>
+                 <div class="col colOfShowOrdersDelivery">
+${address}
+                </div>
+                  <div class="col colOfShowOrdersDelivery">
+    ${totalCost}
+                  </div>
+  
+                </div>
+                </br>
+                    `
+
+
+
+
+
+
+                }
+
+                document.getElementById('showOrdersDelivery').innerHTML = html1;
+
+            }
+
+
+
+
+
 
 
         }
     }
+
 }

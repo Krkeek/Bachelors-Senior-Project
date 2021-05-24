@@ -681,12 +681,31 @@ if (isset($_GET['completedOrdersForDelivery']) == "completedOrdersForDelivery") 
 
 
     $result1 = mysqli_query($con, "SELECT `city` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready';");
-    while ($row1 = mysqli_fetch_assoc($result1)) {
-        $data1[] = $row1;
+    $num = mysqli_num_rows($result);
+    if ($num != 0) {
+        while ($row1 = mysqli_fetch_assoc($result1)) {
+            $data1[] = $row1;
+        }
+        $ordersReady->orderReady = $data1;
+    } else {
+
+        $ordersReady->orderReady = "Empty";
     }
-    $ordersReady->orderReady = $data1;
+
+
+
     echo json_encode($ordersReady);
 }
+
+
+
+if (isset($_GET['startDelivery']) == "startDelivery") {
+    $choosenLocation = $_GET['chosenLocation'];
+    require_once 'connection.php';
+
+    $result1 = mysqli_query($con, "UPDATE `ordertable` INNER JOIN customer ON customer.username = ordertable.username SET `delivery_status`='Delivering...',`manufacture_status`='Finished' WHERE city = '$choosenLocation';");
+}
+
 
 if (isset($_GET['showOrdersDelivery']) == "showOrdersDelivery") {
     $choosenLocation = $_GET['chosenLocation'];
@@ -694,10 +713,80 @@ if (isset($_GET['showOrdersDelivery']) == "showOrdersDelivery") {
     require_once 'connection.php';
 
     $result1 = mysqli_query($con, "SELECT `order_id`,`firstname`,`lastname`,`phone`,`city`,`address`,`total_cost`,`date_of_order` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready';");
+    $num = mysqli_num_rows($result1);
+    if ($num != 0) {
 
-    while ($row1 = mysqli_fetch_assoc($result1)) {
-        $data1[] = $row1;
+        while ($row1 = mysqli_fetch_assoc($result1)) {
+            $data1[] = $row1;
+        }
+        $ordersForSpecificLocation->orderForSpecificLocation = $data1;
+    } else {
+
+        $ordersForSpecificLocation->orderForSpecificLocation = "Empty";
     }
-    $ordersForSpecificLocation->orderForSpecificLocation = $data1;
+
     echo json_encode($ordersForSpecificLocation);
+}
+
+
+
+if (isset($_GET['onloadDelivery']) == "onloadDelivery") {
+    $choosenLocation = $_GET['chosenLocation'];
+    $onloadDelivery = new stdClass();
+    require_once 'connection.php';
+
+    $result = mysqli_query($con, "SELECT `order_id`,`city` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Ready';");
+    $num = mysqli_num_rows($result);
+    if ($num != 0) {
+        while ($row = mysqli_fetch_assoc($result)) {
+            $data[] = $row;
+        }
+        $onloadDelivery->deliveryOrderReady = $data;
+    } else {
+
+        $onloadDelivery->deliveryOrderReady = "Empty";
+    }
+
+    $result1 = mysqli_query($con, "SELECT `order_id`,`city` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `manufacture_status`= 'Finished' && `delivery_status`='Delivering...';");
+    $num1 = mysqli_num_rows($result1);
+    if ($num1 != 0) {
+        while ($row1 = mysqli_fetch_assoc($result1)) {
+            $data1[] = $row1;
+        }
+        $onloadDelivery->deliveryingOrder = $data1;
+    } else {
+
+        $onloadDelivery->deliveryingOrder = "Empty";
+    }
+
+
+
+
+
+
+
+    echo json_encode($onloadDelivery);
+}
+
+if (isset($_GET['orderInformation']) == "orderInformation") {
+
+    $order_id = $_GET['orderId'];
+    $orderInformation = new stdClass();
+    require_once 'connection.php';
+
+
+    $result1 = mysqli_query($con, "SELECT `order_id`,`firstname`,`lastname`,`phone`,`city`,`address`,`total_cost`,`date_of_order` FROM `ordertable` INNER JOIN customer ON customer.username = ordertable.username WHERE `order_id`= '$order_id';");
+    $num = mysqli_num_rows($result1);
+    if ($num != 0) {
+
+        while ($row1 = mysqli_fetch_assoc($result1)) {
+            $data1[] = $row1;
+        }
+        $orderInformation->orderInformationn = $data1;
+    } else {
+
+        $orderInformation->orderInformationn = "Empty";
+    }
+
+    echo json_encode($orderInformation);
 }

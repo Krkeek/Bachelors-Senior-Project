@@ -208,3 +208,27 @@
 #tableOfShowOrdersDelivery {
     font-weight: bolder;
 }
+
+.ColOfOnDelivery {
+    border: 1px solid #3366ff;
+    border-radius: 3px;
+    color: white;
+    size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.deliveryB {
+    font-size: 10px !important;
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+}
+
+.selectOptionInDelivery {
+    margin-top: 5px !important;
+    margin-bottom: 5px !important;
+    background-color: #3366ff !important;
+    color: white !important;
+    font-weight: bold !important;
+}
