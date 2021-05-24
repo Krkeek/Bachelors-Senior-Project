@@ -1379,14 +1379,16 @@ function shop() {
                     backSticker +
                     "' alt='Empty'  width='30px'>";
                 html1 +=
-                    " </div></div></div></div></div><div class='col-4 orderText'><h4 id='cartProductHeader'>" +
+                    " </div></div></div></div></div><div class='col-2 orderText'><h4 id='cartProductHeader'>" +
                     type +
                     "</h4><p><span style='font-weight:bold;'>Size: </span>" +
                     size +
                     "<br /><span style='font-weight:bold;'>Price: </span>" +
                     price +
-                    "$</p></div>";
-                html1 += "</div></div>";
+                    "$</p></div><div id='trashCol' class='col-2 orderItem'>";
+                html1 += "<button type='button' class='btn btn-success custom-btn greenB'>Add to Cart</button>";
+
+                html1 += " </div></div></div>";
                 html1 += "<br/>";
             }
             document.getElementById("shop").innerHTML = html1;
