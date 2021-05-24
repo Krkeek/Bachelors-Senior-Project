@@ -393,7 +393,7 @@ if (isset($_POST['cartItemInsertion']) == "cartItemInsertion") {
     $price = $obj[0]['price'];
 
     $user = $_SESSION['username'];
-    $query = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered` ,`returns`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No','false');";
+    $query = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered` ,`returns`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No','New');";
     mysqli_query($con, $query);
 }
 
@@ -616,7 +616,7 @@ if (isset($_GET['pendingOrdersRetrieve']) == "pendingOrdersRetrieve") {
 
 //Get the approved orders
 if (isset($_GET['pendingOrdersRequests']) == "pendingOrdersRequests") {
-    $result1 = mysqli_query($con, "SELECT `order_id`,`date_of_order`, `total_cost`,`username` FROM `ordertable` WHERE `manufacture_status` = 'Approved' && `deleted` = 'No'");
+    $result1 = mysqli_query($con, "SELECT `order_id`,`date_of_order`, `total_cost`,`username`,`manufacture_status` FROM `ordertable` WHERE (`manufacture_status` = 'Approved' && `deleted` = 'No') OR (`manufacture_status` = 'Manufacturing...' && `deleted` = 'No')");
     $data1 = array();
     while ($row1 = mysqli_fetch_assoc($result1)) {
         $data1[] = $row1;
@@ -835,6 +835,6 @@ if (isset($_GET['addToCartFromShop']) == "addToCartFromShop") {
     $backSticker = $row1['back_sticker'];
     $price = $row1['price'];
     $user = $_SESSION['username'];
-    $result2 = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered`,`returns`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No','true');";
+    $result2 = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered`,`returns`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No','Returns');";
     mysqli_query($con, $result2);
 }

@@ -202,6 +202,7 @@ function showOrderedItems(e) {
                 var pocketSticker = item[a].pocket_sticker;
                 var frontSticker = item[a].front_sticker;
                 var backSticker = item[a].back_sticker;
+                var returns = item[a].returns
                 var url = identifyShirt(type, color);
                 html1 +=
                     "<div class='container orderContainer'><div class='row'><div class='col-3 orderItem'><img src='" +
@@ -228,7 +229,7 @@ function showOrderedItems(e) {
                     size +
                     "<br /><span style='font-weight:bold;'>Price: </span>" +
                     price +
-                    "$</p></div>";
+                    "$</br><span style='font-weight:bold;'>Status: </span>" + returns + " </p></div>";
                 html1 += "</div></div>";
                 html1 += "<br/>";
             }
@@ -264,17 +265,40 @@ function pendingOrdersRequests() {
                     var totalCost = OrderRequest[a].total_cost;
                     var orderId = OrderRequest[a].order_id;
                     var cust_user = OrderRequest[a].username;
-
-                    html1 += `  
+                    var manufacture_status = OrderRequest[a].manufacture_status;
+                    console.log(manufacture_status);
+                    if (manufacture_status == 'Approved') {
+                        html1 += `  
                  <div class='row row-md'>
                <div class='col orderInfo'>` + dateofOrder + `</div>
                 <div class='col orderInfo'>` + totalCost + `</div>
                 <div class='col orderInfo'>` + cust_user + `</div>
                  <div class='col orderInfo'><a id='` + orderId + `' data-toggle='modal' data-target='#showMyOrder2' onClick='showOrderedItemRequests(event)'  type='button' class='btn btn-primary custom-btn blueB'>Show</a></div>
-                 <div class='col adminInfo buttonBox'><a name='` + orderId + `'  type='button' onclick='startFactory(this.name)' class='btn btn-success custom-btn greenB'>Start</a><a name='` + orderId + `' type='button'  onclick='finishFactory(this.name)' class='btn btn-danger custom-btn redB'>Finished</a></div>
+                 <div id='divOfStartFactory' class='col adminInfo buttonBox'><a name='` + orderId + `'  type='button' onclick='startFactory(this.name)' class='btn btn-success custom-btn greenB'>Start</a></div>
                 </div>
                  
                  `
+
+
+                    }
+                    if (manufacture_status == 'Manufacturing...') {
+
+                        html1 += `  
+                 <div class='row row-md'>
+               <div class='col orderInfo'>` + dateofOrder + `</div>
+                <div class='col orderInfo'>` + totalCost + `</div>
+                <div class='col orderInfo'>` + cust_user + `</div>
+                 <div class='col orderInfo'><a id='` + orderId + `' data-toggle='modal' data-target='#showMyOrder2' onClick='showOrderedItemRequests(event)'  type='button' class='btn btn-primary custom-btn blueB'>Show</a></div>
+                  <div id='divOfFinishedFactory' class='col adminInfo buttonBox'><a name='` + orderId + `' type='button'  onclick='finishFactory(this.name)' class='btn btn-danger custom-btn redB'>Finished</a></div>
+                </div>
+                 
+                 `
+
+
+
+                    }
+
+
 
                     document.getElementById("pOrdersRequests").innerHTML = html1;
                     document.getElementById("nopendingOrdersRequests").style.display = "none";
@@ -315,6 +339,7 @@ function showOrderedItemRequests(e) {
                 var pocketSticker = item[a].pocket_sticker;
                 var frontSticker = item[a].front_sticker;
                 var backSticker = item[a].back_sticker;
+                var returns = item[a].returns
                 var url = identifyShirt(type, color);
                 html1 +=
                     "<div class='container orderContainer'><div class='row'><div class='col-3 orderItem'><img src='" +
@@ -341,7 +366,7 @@ function showOrderedItemRequests(e) {
                     size +
                     "<br /><span style='font-weight:bold;'>Price: </span>" +
                     price +
-                    "$</p></div>";
+                    "$</br><span style='font-weight:bold;'>Status: </span>" + returns + " </p></div>";
                 html1 += "</div></div>";
                 html1 += "<br/>";
 
@@ -365,6 +390,8 @@ function startFactory(a) {
         success: function(res) {
             pendingOrdersRequests();
             $('#startFactory').modal('show');
+            document.getElementById('divOfStartFactory').style.display = 'none';
+            document.getElementById('divOfFinishedFactory').style.display = 'flex';
         },
     });
 }
@@ -409,6 +436,7 @@ function showAllOrders() {
                 var pocketSticker = item[a].pocket_sticker;
                 var frontSticker = item[a].front_sticker;
                 var backSticker = item[a].back_sticker;
+                var returns = item[a].returns
                 var url = identifyShirt(type, color);
 
                 html1 +=
@@ -436,7 +464,7 @@ function showAllOrders() {
                     size +
                     "<br /><span style='font-weight:bold;'>Price: </span>" +
                     price +
-                    "$</p></div>";
+                    "$</br><span style='font-weight:bold;'>Status: </span>" + returns + " </p></div>";
                 html1 += "</div></div>";
                 html1 += "<br/>";
 
