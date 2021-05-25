@@ -1011,3 +1011,86 @@ function pushLogs() {
     }
 
 }
+
+function searchInLogs() {
+
+    var log_id = document.getElementById('log_id').value;
+    var order_id = document.getElementById('order_id').value;
+    var adminUsername = document.getElementById('adminUsername').value;
+    var query = "";
+
+    if (log_id != '' && order_id != '' && adminUsername != '') {
+        console.log("1");
+        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' && `log_id` = '" + log_id + "' && `order_id` = '" + order_id + "';";
+    } else if (log_id == '' && order_id == '' && adminUsername == '') {
+        console.log("2");
+        query = "SELECT * FROM `logs`;";
+    } else if (log_id == '' && order_id != '' && adminUsername != '') {
+        console.log("3");
+        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' && `order_id` = '" + order_id + "';";
+    } else if (order_id == '' && log_id != '' && adminUsername != '') {
+        console.log(adminUsername + " " + log_id + " 4");
+        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' && `log_id` = '" + log_id + "';";
+    } else if (adminUsername == '' && order_id != '' && log_id != '') {
+        console.log("5");
+        query = "SELECT * FROM `logs` WHERE `log_id` = '" + log_id + "' && `order_id` = '" + order_id + "';";
+    } else if (log_id != '' && order_id == '' && adminUsername == '') {
+        console.log("6");
+        query = "SELECT * FROM `logs` WHERE `log_id` = '" + log_id + "';";
+    } else if (order_id != '' && log_id == '' && adminUsername == '') {
+        console.log("7");
+        query = "SELECT * FROM `logs` WHERE `order_id` = '" + order_id + "';";
+    } else if (adminUsername != '' && order_id == '' && log_id == '') {
+        console.log("8");
+        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "';";
+    }
+
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?pushLogsWithSearch=pushLogsWithSearch&query=" + query;
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+            var html = " ";
+            var logs = JSON.parse(this.responseText);
+            var log = logs.log;
+            for (var a = 0; a < log.length; a++) {
+
+                var log_id = log[a].log_id;
+                var username = log[a].username;
+                var date_of_edit = log[a].date_of_edit;
+                var order_id = log[a].order_id;
+                var action = log[a].action;
+
+                html += `
+                
+                    <div class='row'>
+                    <div class="col colSupervisor">
+                                ${log_id}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${username}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${date_of_edit}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${order_id}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${action}
+                            </div></div>
+                
+                `
+            }
+
+        }
+
+        document.getElementById('pushLogs').innerHTML = " ";
+        document.getElementById('pushLogs').innerHTML = html;
+    }
+
+}

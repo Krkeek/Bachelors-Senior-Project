@@ -878,3 +878,18 @@ if (isset($_GET['pushLogs']) == "pushLogs") {
     $logs->log = $data;
     echo json_encode($logs);
 }
+
+if (isset($_GET['pushLogsWithSearch']) == "pushLogsWithSearch") {
+
+    $logs = new stdClass();
+    $data = array();
+    require_once 'connection.php';
+
+    $stmt = $_GET['query'];
+    $query = mysqli_query($con, "$stmt");
+    while ($row = mysqli_fetch_assoc($query)) {
+        $data[] = $row;
+    }
+    $logs->log = $data;
+    echo json_encode($logs);
+}

@@ -85,7 +85,37 @@ $email = $row[3];
                         </div>
                     </div>
                 </div>
-                <div class="col-4">
+                <div id="searchFilterContainer" class="col-4">
+                    <div id="searchFilterContainer2" class="container">
+                        <div class="form-row searchFilterRowHeader ">
+                            <div class="col ">
+                                <h2 class="Font">Search Filter:</h2>
+                            </div>
+                        </div>
+                        <div class="form-row searchFilterRow">
+                            <div class="col">
+
+                            </div>
+                        </div>
+                        <div class="form-row searchFilterRow">
+                            <div class="col colOf">
+                                <label>log_id: <input id="log_id" class="form-control textFieldSupervisor" type="number"></label>
+                                <label>order_id: <input id="order_id" class="form-control textFieldSupervisor" type="number"></label>
+                            </div>
+                        </div>
+                        <div class="form-row searchFilterRow">
+                            <div class="col colOf">
+                                <label>username: <input id="adminUsername" class="form-control" type="text"></label>
+                            </div>
+                        </div>
+                        <div class="form-row searchFilterRow">
+                            <div class="col colOf">
+                                <button onclick="searchInLogs()" class="btn btn-success custom-btn greenB ">Search</button>
+                                <button onclick="pushLogs()" class="btn btn-primary custom-btn blueB ">Show All Logs</button>
+                            </div>
+                        </div>
+
+                    </div>
 
                 </div>
             </div>
