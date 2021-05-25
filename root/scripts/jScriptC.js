@@ -993,6 +993,8 @@ ajax.onreadystatechange = function() {
         var Emojis = data.Emojis;
         var Corona = data.Corona;
         var Food = data.Food;
+        var Cars = data.Cars;
+        var Internet = data.Internet;
 
         var html1 = "";
         var html2 = "";
@@ -1004,6 +1006,8 @@ ajax.onreadystatechange = function() {
         var html8 = "";
         var html9 = "";
         var html10 = "";
+        var html11 = "";
+        var html12 = "";
         for (var a = 0; a < Logos.length; a++) {
             var img = Logos[a].img_path;
 
@@ -1113,6 +1117,28 @@ ajax.onreadystatechange = function() {
             html10 += "</div>";
             html10 += "</div>";
         }
+        for (var a = 0; a < Cars.length; a++) {
+            var img = Cars[a].img_path;
+
+            html11 += '<div class="fillIntable">';
+            html11 +=
+                '<div class="fill" draggable="true" ondragstart="photoDrag(this)">';
+            html11 +=
+                "<img class='myImg' id='" + img + "' src='" + img + "' width='70px;'>";
+            html11 += "</div>";
+            html11 += "</div>";
+        }
+        for (var a = 0; a < Internet.length; a++) {
+            var img = Internet[a].img_path;
+
+            html12 += '<div class="fillIntable">';
+            html12 +=
+                '<div class="fill" draggable="true" ondragstart="photoDrag(this)">';
+            html12 +=
+                "<img class='myImg' id='" + img + "' src='" + img + "' width='70px;'>";
+            html12 += "</div>";
+            html12 += "</div>";
+        }
         document.getElementById("Logos").innerHTML = html1;
         document.getElementById("Sports").innerHTML = html2;
         document.getElementById("Symbols").innerHTML = html3;
@@ -1123,6 +1149,8 @@ ajax.onreadystatechange = function() {
         document.getElementById("Graduation").innerHTML = html8;
         document.getElementById("Corona").innerHTML = html9;
         document.getElementById("Food").innerHTML = html10;
+        document.getElementById("Cars").innerHTML = html11;
+        document.getElementById("Internet").innerHTML = html12;
     }
 };
 //#endregion

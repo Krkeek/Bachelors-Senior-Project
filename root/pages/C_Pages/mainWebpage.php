@@ -90,6 +90,8 @@ $userr = $row[6];
                         <button class="tablinks" onclick="openTab(event, 'c8')">Emojis</button>
                         <button class="tablinks" onclick="openTab(event, 'c9')">Corona</button>
                         <button class="tablinks" onclick="openTab(event, 'c10')">Food</button>
+                        <button class="tablinks" onclick="openTab(event, 'c11')">Cars</button>
+                        <button class="tablinks" onclick="openTab(event, 'c12')">Internet</button>
                     </div>
 
                     <div id="c1" class="tabcontent">
@@ -169,6 +171,22 @@ $userr = $row[6];
                         <div class=" container-fluid">
                             <div class="row stickerRow">
                                 <div id="Food" class="col flex-box-container"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="c11" class="tabcontent">
+                        <div class=" container-fluid">
+                            <div class="row stickerRow">
+                                <div id="Cars" class="col flex-box-container"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div id="c12" class="tabcontent">
+                        <div class=" container-fluid">
+                            <div class="row stickerRow">
+                                <div id="Internet" class="col flex-box-container"></div>
                             </div>
                         </div>
 

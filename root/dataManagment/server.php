@@ -472,6 +472,17 @@ if (isset($_GET['dataRetrieve']) == "dataRetrieve") {
         $data10[] = $row10;
     }
 
+    $result11 = mysqli_query($con, "SELECT `img_path` FROM `stickers` WHERE `type`='Cars';");
+    $data11 = array();
+    while ($row11 = mysqli_fetch_assoc($result11)) {
+        $data11[] = $row11;
+    }
+    $result12 = mysqli_query($con, "SELECT `img_path` FROM `stickers` WHERE `type`='Internet';");
+    $data12 = array();
+    while ($row12 = mysqli_fetch_assoc($result12)) {
+        $data12[] = $row12;
+    }
+
     $Stickers = new stdClass();
     $Stickers->Logos = $data1;
     $Stickers->Sports = $data2;
@@ -483,6 +494,8 @@ if (isset($_GET['dataRetrieve']) == "dataRetrieve") {
     $Stickers->Graduation = $data8;
     $Stickers->Corona = $data9;
     $Stickers->Food = $data10;
+    $Stickers->Cars = $data11;
+    $Stickers->Internet = $data12;
 
     echo json_encode($Stickers);
 }
