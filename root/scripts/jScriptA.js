@@ -1021,19 +1021,19 @@ function searchInLogs() {
 
     if (log_id != '' && order_id != '' && adminUsername != '') {
         console.log("1");
-        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' && `log_id` = '" + log_id + "' && `order_id` = '" + order_id + "';";
+        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' AND `log_id` = '" + log_id + "' AND `order_id` = '" + order_id + "';";
     } else if (log_id == '' && order_id == '' && adminUsername == '') {
         console.log("2");
         query = "SELECT * FROM `logs`;";
     } else if (log_id == '' && order_id != '' && adminUsername != '') {
         console.log("3");
-        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' && `order_id` = '" + order_id + "';";
+        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' AND `order_id` = '" + order_id + "';";
     } else if (order_id == '' && log_id != '' && adminUsername != '') {
-        console.log(adminUsername + " " + log_id + " 4");
-        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' && `log_id` = '" + log_id + "';";
+        console.log("4");
+        query = "SELECT * FROM `logs` WHERE `username`='" + adminUsername + "' AND `log_id` = '" + log_id + "';";
     } else if (adminUsername == '' && order_id != '' && log_id != '') {
         console.log("5");
-        query = "SELECT * FROM `logs` WHERE `log_id` = '" + log_id + "' && `order_id` = '" + order_id + "';";
+        query = "SELECT * FROM `logs` WHERE `log_id` = '" + log_id + "' AND `order_id` = '" + order_id + "';";
     } else if (log_id != '' && order_id == '' && adminUsername == '') {
         console.log("6");
         query = "SELECT * FROM `logs` WHERE `log_id` = '" + log_id + "';";
