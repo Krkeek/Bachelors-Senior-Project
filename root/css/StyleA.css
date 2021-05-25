@@ -232,3 +232,37 @@
     color: white !important;
     font-weight: bold !important;
 }
+
+#logs {
+    background-color: black;
+    border-bottom: 3px solid white;
+}
+
+.colHeaderSupervisor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 1px solid #3366ff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 3px;
+    font-weight: bold;
+    background-color: #3366ffab;
+}
+
+#logsContainer {
+    margin-top: 70px;
+    margin-bottom: 20px;
+}
+
+.colSupervisor {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    border: 1px solid #3366ff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-radius: 3px;
+}

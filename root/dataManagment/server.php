@@ -97,7 +97,7 @@ if (isset($_POST['login_admin'])) {
                 header('location: ../A_Pages/subadminPage.php#pendingOrders');
                 break;
             case "Supervisor":
-                header('location: ../A_Pages/supervisorPage.php');
+                header('location: ../A_Pages/supervisorPage.php#logs');
                 break;
             case "Delivery":
                 header('location: ../A_Pages/deliveryPage.php');
@@ -863,4 +863,18 @@ if (isset($_GET['addToCartFromShop']) == "addToCartFromShop") {
     $user = $_SESSION['username'];
     $result2 = "INSERT INTO `product`(`username`, `type`, `size`, `color`, `pocket_sticker`, `front_sticker`, `back_sticker`, `price`, `ordered`,`returns`) VALUES ('$user','$type','$size','$color','$pocketSticker','$frontSticker','$backSticker','$price','No','Returns');";
     mysqli_query($con, $result2);
+}
+
+if (isset($_GET['pushLogs']) == "pushLogs") {
+    $logs = new stdClass();
+    $data = array();
+    require_once 'connection.php';
+    $query = mysqli_query($con, "SELECT * FROM `logs`;");
+
+    while ($row = mysqli_fetch_assoc($query)) {
+
+        $data[] = $row;
+    }
+    $logs->log = $data;
+    echo json_encode($logs);
 }

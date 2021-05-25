@@ -27,7 +27,7 @@ $email = $row[3];
     <title>U-Style</title>
 </head>
 
-<body onload="pendingOrders()">
+<body onload="pushLogs()">
     <nav class="navbar navbar-expand-sm navbar-dark sticky-top" style="background-color: black;">
         <a class="navbar-brand" href="#">
             <img width="40px" src="../../images/cssPhotos/Logo2.png" alt="Logo">
@@ -36,7 +36,7 @@ $email = $row[3];
         <button class="navbar-toggler" data-toggle="collapse" data-target="#navbarMenu"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarMenu">
             <ul class="navbar-nav Font">
-                <li class="nav-item"><a href="#tab1" class="nav-link">Tab1</a></li>
+                <li class="nav-item"><a href="#logs" class="nav-link">Logs</a></li>
                 <li class="nav-item"><a href="#accountSettings" class="nav-link">Account Settings</a></li>
                 <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
 
@@ -58,8 +58,38 @@ $email = $row[3];
 
         </div>
     </nav>
-    <section id="tab1" class="section">
+    <section id="logs" class="section">
+        <div id="logsContainer" class="container">
+            <div class="row">
+                <div class="col-8">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col colHeaderSupervisor">
+                                log_id
+                            </div>
+                            <div class="col colHeaderSupervisor">
+                                username
+                            </div>
+                            <div class="col colHeaderSupervisor">
+                                data_of_edit
+                            </div>
+                            <div class="col colHeaderSupervisor">
+                                order_id
+                            </div>
+                            <div class="col colHeaderSupervisor">
+                                action
+                            </div>
+                        </div>
+                        <div id="pushLogs">
 
+                        </div>
+                    </div>
+                </div>
+                <div class="col-4">
+
+                </div>
+            </div>
+        </div>
 
     </section>
 

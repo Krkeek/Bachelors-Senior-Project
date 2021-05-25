@@ -959,3 +959,55 @@ function orderReturned(order_id) {
     }
 
 }
+
+function pushLogs() {
+    var ajax = new XMLHttpRequest();
+    var method = "GET";
+    var url = "../../dataManagment/server.php?pushLogs=pushLogs";
+    var asynchronous = true;
+    ajax.open(method, url, asynchronous);
+    ajax.send();
+    ajax.onreadystatechange = function() {
+        if (this.readyState === 4 && this.status === 200) {
+
+            var html = " ";
+            var logs = JSON.parse(this.responseText);
+            var log = logs.log;
+            for (var a = 0; a < log.length; a++) {
+
+                var log_id = log[a].log_id;
+                var username = log[a].username;
+                var date_of_edit = log[a].date_of_edit;
+                var order_id = log[a].order_id;
+                var action = log[a].action;
+
+                html += `
+                
+                    <div class='row'>
+                    <div class="col colSupervisor">
+                                ${log_id}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${username}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${date_of_edit}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${order_id}
+                            </div>
+                            <div class="col colSupervisor">
+                                ${action}
+                            </div></div>
+                
+                `
+
+            }
+
+
+
+        }
+        document.getElementById('pushLogs').innerHTML = html;
+    }
+
+}
