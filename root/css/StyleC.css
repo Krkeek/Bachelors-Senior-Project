@@ -102,7 +102,7 @@
 }
 
 #design {
-    background-image: url("../images/cssPhotos/design.jpg");
+    background-image: url('../images/cssPhotos/shopBackground.jpg');
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -118,10 +118,14 @@
 }
 
 #returns {
-    background-color: whitesmoke;
     padding: 50px;
     padding-top: 70px;
     display: flex;
+    background-image: url('../images/cssPhotos/shopBackground.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 #accountSettings {
