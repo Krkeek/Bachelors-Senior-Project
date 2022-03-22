@@ -1,1 +1,1 @@
-# VS.Senior
+# Bachelors Senior Project
